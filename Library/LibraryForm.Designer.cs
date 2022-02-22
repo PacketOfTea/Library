@@ -35,6 +35,7 @@
             this.ReadersBooksPanel = new System.Windows.Forms.Panel();
             this.TitleReadersBooksLbl = new System.Windows.Forms.Label();
             this.SearchBooksPanel = new System.Windows.Forms.Panel();
+            this.SearchBookBtn = new System.Windows.Forms.Button();
             this.LibraryCardPanel = new System.Windows.Forms.Panel();
             this.PrintCardBtn = new System.Windows.Forms.Button();
             this.EditReaderBtn = new System.Windows.Forms.Button();
@@ -47,7 +48,6 @@
             this.CardNumberLbl = new System.Windows.Forms.Label();
             this.ReadersCardLbl = new System.Windows.Forms.Label();
             this.PhotoPictureBox = new System.Windows.Forms.PictureBox();
-            this.SearchBookBtn = new System.Windows.Forms.Button();
             this.SearchNCreateCardPanel.SuspendLayout();
             this.ReadersBooksPanel.SuspendLayout();
             this.SearchBooksPanel.SuspendLayout();
@@ -115,6 +115,18 @@
             this.SearchBooksPanel.Name = "SearchBooksPanel";
             this.SearchBooksPanel.Size = new System.Drawing.Size(681, 536);
             this.SearchBooksPanel.TabIndex = 2;
+            // 
+            // SearchBookBtn
+            // 
+            this.SearchBookBtn.BackColor = System.Drawing.Color.PapayaWhip;
+            this.SearchBookBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SearchBookBtn.Location = new System.Drawing.Point(7, 7);
+            this.SearchBookBtn.Name = "SearchBookBtn";
+            this.SearchBookBtn.Size = new System.Drawing.Size(121, 33);
+            this.SearchBookBtn.TabIndex = 0;
+            this.SearchBookBtn.Text = "Поиск книги";
+            this.SearchBookBtn.UseVisualStyleBackColor = false;
+            this.SearchBookBtn.Click += new System.EventHandler(this.SearchBookBtn_Click);
             // 
             // LibraryCardPanel
             // 
@@ -250,18 +262,6 @@
             this.PhotoPictureBox.Size = new System.Drawing.Size(90, 120);
             this.PhotoPictureBox.TabIndex = 0;
             this.PhotoPictureBox.TabStop = false;
-            // 
-            // SearchBookBtn
-            // 
-            this.SearchBookBtn.BackColor = System.Drawing.Color.PapayaWhip;
-            this.SearchBookBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SearchBookBtn.Location = new System.Drawing.Point(7, 7);
-            this.SearchBookBtn.Name = "SearchBookBtn";
-            this.SearchBookBtn.Size = new System.Drawing.Size(121, 33);
-            this.SearchBookBtn.TabIndex = 0;
-            this.SearchBookBtn.Text = "Поиск книги";
-            this.SearchBookBtn.UseVisualStyleBackColor = false;
-            this.SearchBookBtn.Click += new System.EventHandler(this.SearchBookBtn_Click);
             // 
             // Library
             // 
