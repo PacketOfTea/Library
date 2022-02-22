@@ -110,13 +110,14 @@
             // 
             // SearchBtn
             // 
+            this.SearchBtn.BackColor = System.Drawing.Color.Bisque;
             this.SearchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SearchBtn.Location = new System.Drawing.Point(150, 180);
             this.SearchBtn.Name = "SearchBtn";
             this.SearchBtn.Size = new System.Drawing.Size(120, 40);
             this.SearchBtn.TabIndex = 22;
             this.SearchBtn.Text = "Поиск";
-            this.SearchBtn.UseVisualStyleBackColor = true;
+            this.SearchBtn.UseVisualStyleBackColor = false;
             // 
             // Search
             // 

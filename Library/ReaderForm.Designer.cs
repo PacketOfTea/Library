@@ -44,6 +44,7 @@
             this.PhoneNumberTxtBox = new System.Windows.Forms.TextBox();
             this.CancelBtn = new System.Windows.Forms.Button();
             this.SaveBtn = new System.Windows.Forms.Button();
+            this.LoadImageBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PhotoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -160,23 +161,36 @@
             // 
             // CancelBtn
             // 
+            this.CancelBtn.BackColor = System.Drawing.Color.LightCoral;
             this.CancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CancelBtn.Location = new System.Drawing.Point(312, 459);
             this.CancelBtn.Name = "CancelBtn";
             this.CancelBtn.Size = new System.Drawing.Size(94, 34);
             this.CancelBtn.TabIndex = 16;
             this.CancelBtn.Text = "Отменить";
-            this.CancelBtn.UseVisualStyleBackColor = true;
+            this.CancelBtn.UseVisualStyleBackColor = false;
             // 
             // SaveBtn
             // 
+            this.SaveBtn.BackColor = System.Drawing.Color.LightGreen;
             this.SaveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveBtn.Location = new System.Drawing.Point(212, 459);
             this.SaveBtn.Name = "SaveBtn";
             this.SaveBtn.Size = new System.Drawing.Size(94, 34);
             this.SaveBtn.TabIndex = 17;
             this.SaveBtn.Text = "Сохранить";
-            this.SaveBtn.UseVisualStyleBackColor = true;
+            this.SaveBtn.UseVisualStyleBackColor = false;
+            // 
+            // LoadImageBtn
+            // 
+            this.LoadImageBtn.BackColor = System.Drawing.Color.Bisque;
+            this.LoadImageBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LoadImageBtn.Location = new System.Drawing.Point(185, 80);
+            this.LoadImageBtn.Name = "LoadImageBtn";
+            this.LoadImageBtn.Size = new System.Drawing.Size(221, 29);
+            this.LoadImageBtn.TabIndex = 18;
+            this.LoadImageBtn.Text = "Загрузить изображение";
+            this.LoadImageBtn.UseVisualStyleBackColor = false;
             // 
             // Reader
             // 
@@ -184,6 +198,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(418, 505);
+            this.Controls.Add(this.LoadImageBtn);
             this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.CancelBtn);
             this.Controls.Add(this.PhoneNumberTxtBox);
@@ -226,5 +241,6 @@
         private TextBox PhoneNumberTxtBox;
         private Button CancelBtn;
         private Button SaveBtn;
+        private Button LoadImageBtn;
     }
 }

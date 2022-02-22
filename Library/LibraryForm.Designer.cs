@@ -35,12 +35,9 @@
             this.ReadersBooksPanel = new System.Windows.Forms.Panel();
             this.TitleReadersBooksLbl = new System.Windows.Forms.Label();
             this.SearchBooksPanel = new System.Windows.Forms.Panel();
-            this.SearchBookBtn = new System.Windows.Forms.Button();
             this.LibraryCardPanel = new System.Windows.Forms.Panel();
             this.PrintCardBtn = new System.Windows.Forms.Button();
             this.EditReaderBtn = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.ChangeReaderBtn = new System.Windows.Forms.Button();
             this.PatronymicLbl = new System.Windows.Forms.Label();
             this.NameLbl = new System.Windows.Forms.Label();
@@ -48,6 +45,7 @@
             this.CardNumberLbl = new System.Windows.Forms.Label();
             this.ReadersCardLbl = new System.Windows.Forms.Label();
             this.PhotoPictureBox = new System.Windows.Forms.PictureBox();
+            this.SearchBookBtn = new System.Windows.Forms.Button();
             this.SearchNCreateCardPanel.SuspendLayout();
             this.ReadersBooksPanel.SuspendLayout();
             this.SearchBooksPanel.SuspendLayout();
@@ -116,26 +114,12 @@
             this.SearchBooksPanel.Size = new System.Drawing.Size(681, 536);
             this.SearchBooksPanel.TabIndex = 2;
             // 
-            // SearchBookBtn
-            // 
-            this.SearchBookBtn.BackColor = System.Drawing.Color.PapayaWhip;
-            this.SearchBookBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SearchBookBtn.Location = new System.Drawing.Point(7, 7);
-            this.SearchBookBtn.Name = "SearchBookBtn";
-            this.SearchBookBtn.Size = new System.Drawing.Size(121, 33);
-            this.SearchBookBtn.TabIndex = 0;
-            this.SearchBookBtn.Text = "Поиск книги";
-            this.SearchBookBtn.UseVisualStyleBackColor = false;
-            this.SearchBookBtn.Click += new System.EventHandler(this.SearchBookBtn_Click);
-            // 
             // LibraryCardPanel
             // 
             this.LibraryCardPanel.BackColor = System.Drawing.Color.White;
             this.LibraryCardPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.LibraryCardPanel.Controls.Add(this.PrintCardBtn);
             this.LibraryCardPanel.Controls.Add(this.EditReaderBtn);
-            this.LibraryCardPanel.Controls.Add(this.button2);
-            this.LibraryCardPanel.Controls.Add(this.button1);
             this.LibraryCardPanel.Controls.Add(this.ChangeReaderBtn);
             this.LibraryCardPanel.Controls.Add(this.PatronymicLbl);
             this.LibraryCardPanel.Controls.Add(this.NameLbl);
@@ -147,10 +131,10 @@
             this.LibraryCardPanel.Name = "LibraryCardPanel";
             this.LibraryCardPanel.Size = new System.Drawing.Size(335, 206);
             this.LibraryCardPanel.TabIndex = 1;
-            this.LibraryCardPanel.Visible = false;
             // 
             // PrintCardBtn
             // 
+            this.PrintCardBtn.AccessibleDescription = "Печать читательского билета";
             this.PrintCardBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PrintCardBtn.BackgroundImage")));
             this.PrintCardBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PrintCardBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -170,28 +154,6 @@
             this.EditReaderBtn.Size = new System.Drawing.Size(30, 30);
             this.EditReaderBtn.TabIndex = 9;
             this.EditReaderBtn.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(85, 166);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(0, 0);
-            this.button2.TabIndex = 8;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(44, 166);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(0, 0);
-            this.button1.TabIndex = 7;
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // ChangeReaderBtn
             // 
@@ -263,6 +225,18 @@
             this.PhotoPictureBox.TabIndex = 0;
             this.PhotoPictureBox.TabStop = false;
             // 
+            // SearchBookBtn
+            // 
+            this.SearchBookBtn.BackColor = System.Drawing.Color.PapayaWhip;
+            this.SearchBookBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SearchBookBtn.Location = new System.Drawing.Point(7, 7);
+            this.SearchBookBtn.Name = "SearchBookBtn";
+            this.SearchBookBtn.Size = new System.Drawing.Size(121, 33);
+            this.SearchBookBtn.TabIndex = 0;
+            this.SearchBookBtn.Text = "Поиск книги";
+            this.SearchBookBtn.UseVisualStyleBackColor = false;
+            this.SearchBookBtn.Click += new System.EventHandler(this.SearchBookBtn_Click);
+            // 
             // Library
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -306,8 +280,6 @@
         private PictureBox PhotoPictureBox;
         private Button PrintCardBtn;
         private Button EditReaderBtn;
-        private Button button2;
-        private Button button1;
         private Button ChangeReaderBtn;
         private Button SearchBookBtn;
     }
