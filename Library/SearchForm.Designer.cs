@@ -29,44 +29,16 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Search));
-            this.PublisherTxtBox = new System.Windows.Forms.TextBox();
-            this.PublicDateTxtBox = new System.Windows.Forms.TextBox();
-            this.NameTxtBox = new System.Windows.Forms.TextBox();
-            this.AuthorTxtBox = new System.Windows.Forms.TextBox();
             this.PublisherLbl = new System.Windows.Forms.Label();
             this.PublicDateLbl = new System.Windows.Forms.Label();
             this.NameLbl = new System.Windows.Forms.Label();
             this.AuthorLbl = new System.Windows.Forms.Label();
             this.SearchBtn = new System.Windows.Forms.Button();
+            this.AuthorСmbBox = new System.Windows.Forms.ComboBox();
+            this.NameCmbBox = new System.Windows.Forms.ComboBox();
+            this.PublicDateCmbBox = new System.Windows.Forms.ComboBox();
+            this.PublisherCmbBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
-            // 
-            // PublisherTxtBox
-            // 
-            this.PublisherTxtBox.Location = new System.Drawing.Point(185, 130);
-            this.PublisherTxtBox.Name = "PublisherTxtBox";
-            this.PublisherTxtBox.Size = new System.Drawing.Size(221, 27);
-            this.PublisherTxtBox.TabIndex = 21;
-            // 
-            // PublicDateTxtBox
-            // 
-            this.PublicDateTxtBox.Location = new System.Drawing.Point(185, 90);
-            this.PublicDateTxtBox.Name = "PublicDateTxtBox";
-            this.PublicDateTxtBox.Size = new System.Drawing.Size(221, 27);
-            this.PublicDateTxtBox.TabIndex = 20;
-            // 
-            // NameTxtBox
-            // 
-            this.NameTxtBox.Location = new System.Drawing.Point(185, 50);
-            this.NameTxtBox.Name = "NameTxtBox";
-            this.NameTxtBox.Size = new System.Drawing.Size(221, 27);
-            this.NameTxtBox.TabIndex = 19;
-            // 
-            // AuthorTxtBox
-            // 
-            this.AuthorTxtBox.Location = new System.Drawing.Point(185, 10);
-            this.AuthorTxtBox.Name = "AuthorTxtBox";
-            this.AuthorTxtBox.Size = new System.Drawing.Size(221, 27);
-            this.AuthorTxtBox.TabIndex = 18;
             // 
             // PublisherLbl
             // 
@@ -119,17 +91,57 @@
             this.SearchBtn.Text = "Поиск";
             this.SearchBtn.UseVisualStyleBackColor = false;
             // 
+            // AuthorСmbBox
+            // 
+            this.AuthorСmbBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.AuthorСmbBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.AuthorСmbBox.FormattingEnabled = true;
+            this.AuthorСmbBox.Location = new System.Drawing.Point(185, 13);
+            this.AuthorСmbBox.Name = "AuthorСmbBox";
+            this.AuthorСmbBox.Size = new System.Drawing.Size(221, 28);
+            this.AuthorСmbBox.TabIndex = 23;
+            // 
+            // NameCmbBox
+            // 
+            this.NameCmbBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.NameCmbBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.NameCmbBox.FormattingEnabled = true;
+            this.NameCmbBox.Location = new System.Drawing.Point(185, 49);
+            this.NameCmbBox.Name = "NameCmbBox";
+            this.NameCmbBox.Size = new System.Drawing.Size(221, 28);
+            this.NameCmbBox.TabIndex = 24;
+            // 
+            // PublicDateCmbBox
+            // 
+            this.PublicDateCmbBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.PublicDateCmbBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.PublicDateCmbBox.FormattingEnabled = true;
+            this.PublicDateCmbBox.Location = new System.Drawing.Point(185, 89);
+            this.PublicDateCmbBox.Name = "PublicDateCmbBox";
+            this.PublicDateCmbBox.Size = new System.Drawing.Size(221, 28);
+            this.PublicDateCmbBox.TabIndex = 25;
+            // 
+            // PublisherCmbBox
+            // 
+            this.PublisherCmbBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.PublisherCmbBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.PublisherCmbBox.FormattingEnabled = true;
+            this.PublisherCmbBox.Location = new System.Drawing.Point(185, 129);
+            this.PublisherCmbBox.Name = "PublisherCmbBox";
+            this.PublisherCmbBox.Size = new System.Drawing.Size(221, 28);
+            this.PublisherCmbBox.TabIndex = 26;
+            // 
             // Search
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(422, 236);
+            this.Controls.Add(this.PublisherCmbBox);
+            this.Controls.Add(this.PublicDateCmbBox);
+            this.Controls.Add(this.NameCmbBox);
+            this.Controls.Add(this.AuthorСmbBox);
             this.Controls.Add(this.SearchBtn);
-            this.Controls.Add(this.PublisherTxtBox);
-            this.Controls.Add(this.PublicDateTxtBox);
-            this.Controls.Add(this.NameTxtBox);
-            this.Controls.Add(this.AuthorTxtBox);
             this.Controls.Add(this.PublisherLbl);
             this.Controls.Add(this.PublicDateLbl);
             this.Controls.Add(this.NameLbl);
@@ -144,15 +156,14 @@
         }
 
         #endregion
-
-        private TextBox PublisherTxtBox;
-        private TextBox PublicDateTxtBox;
-        private TextBox NameTxtBox;
-        private TextBox AuthorTxtBox;
         private Label PublisherLbl;
         private Label PublicDateLbl;
         private Label NameLbl;
         private Label AuthorLbl;
         private Button SearchBtn;
+        private ComboBox AuthorСmbBox;
+        private ComboBox NameCmbBox;
+        private ComboBox PublicDateCmbBox;
+        private ComboBox PublisherCmbBox;
     }
 }
