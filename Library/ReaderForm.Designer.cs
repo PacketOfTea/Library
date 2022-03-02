@@ -61,7 +61,7 @@
             // 
             this.SurnameLbl.AutoSize = true;
             this.SurnameLbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.SurnameLbl.Location = new System.Drawing.Point(212, 12);
+            this.SurnameLbl.Location = new System.Drawing.Point(188, 14);
             this.SurnameLbl.Name = "SurnameLbl";
             this.SurnameLbl.Size = new System.Drawing.Size(96, 28);
             this.SurnameLbl.TabIndex = 4;
@@ -71,7 +71,7 @@
             // 
             this.NameLbl.AutoSize = true;
             this.NameLbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.NameLbl.Location = new System.Drawing.Point(212, 52);
+            this.NameLbl.Location = new System.Drawing.Point(188, 54);
             this.NameLbl.Name = "NameLbl";
             this.NameLbl.Size = new System.Drawing.Size(51, 28);
             this.NameLbl.TabIndex = 5;
@@ -81,7 +81,7 @@
             // 
             this.PatronymicLbl.AutoSize = true;
             this.PatronymicLbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.PatronymicLbl.Location = new System.Drawing.Point(212, 92);
+            this.PatronymicLbl.Location = new System.Drawing.Point(188, 94);
             this.PatronymicLbl.Name = "PatronymicLbl";
             this.PatronymicLbl.Size = new System.Drawing.Size(96, 28);
             this.PatronymicLbl.TabIndex = 6;
@@ -91,7 +91,7 @@
             // 
             this.CardNumberLbl.AutoSize = true;
             this.CardNumberLbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CardNumberLbl.Location = new System.Drawing.Point(212, 132);
+            this.CardNumberLbl.Location = new System.Drawing.Point(188, 134);
             this.CardNumberLbl.Name = "CardNumberLbl";
             this.CardNumberLbl.Size = new System.Drawing.Size(133, 28);
             this.CardNumberLbl.TabIndex = 7;
@@ -101,7 +101,7 @@
             // 
             this.AddressLbl.AutoSize = true;
             this.AddressLbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.AddressLbl.Location = new System.Drawing.Point(212, 172);
+            this.AddressLbl.Location = new System.Drawing.Point(188, 174);
             this.AddressLbl.Name = "AddressLbl";
             this.AddressLbl.Size = new System.Drawing.Size(67, 28);
             this.AddressLbl.TabIndex = 8;
@@ -111,7 +111,7 @@
             // 
             this.PhoneNumberLbl.AutoSize = true;
             this.PhoneNumberLbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.PhoneNumberLbl.Location = new System.Drawing.Point(212, 212);
+            this.PhoneNumberLbl.Location = new System.Drawing.Point(188, 214);
             this.PhoneNumberLbl.Name = "PhoneNumberLbl";
             this.PhoneNumberLbl.Size = new System.Drawing.Size(166, 28);
             this.PhoneNumberLbl.TabIndex = 9;
@@ -119,28 +119,28 @@
             // 
             // SurnameTxtBox
             // 
-            this.SurnameTxtBox.Location = new System.Drawing.Point(385, 13);
+            this.SurnameTxtBox.Location = new System.Drawing.Point(361, 15);
             this.SurnameTxtBox.Name = "SurnameTxtBox";
             this.SurnameTxtBox.Size = new System.Drawing.Size(221, 27);
             this.SurnameTxtBox.TabIndex = 10;
             // 
             // NameTxtBox
             // 
-            this.NameTxtBox.Location = new System.Drawing.Point(385, 53);
+            this.NameTxtBox.Location = new System.Drawing.Point(361, 55);
             this.NameTxtBox.Name = "NameTxtBox";
             this.NameTxtBox.Size = new System.Drawing.Size(221, 27);
             this.NameTxtBox.TabIndex = 11;
             // 
             // PatronymicTxtBox
             // 
-            this.PatronymicTxtBox.Location = new System.Drawing.Point(385, 93);
+            this.PatronymicTxtBox.Location = new System.Drawing.Point(361, 95);
             this.PatronymicTxtBox.Name = "PatronymicTxtBox";
             this.PatronymicTxtBox.Size = new System.Drawing.Size(221, 27);
             this.PatronymicTxtBox.TabIndex = 12;
             // 
             // AddressTxtBox
             // 
-            this.AddressTxtBox.Location = new System.Drawing.Point(385, 173);
+            this.AddressTxtBox.Location = new System.Drawing.Point(361, 175);
             this.AddressTxtBox.Name = "AddressTxtBox";
             this.AddressTxtBox.Size = new System.Drawing.Size(221, 27);
             this.AddressTxtBox.TabIndex = 14;
@@ -149,7 +149,7 @@
             // 
             this.CancelBtn.BackColor = System.Drawing.Color.LightCoral;
             this.CancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CancelBtn.Location = new System.Drawing.Point(512, 272);
+            this.CancelBtn.Location = new System.Drawing.Point(473, 259);
             this.CancelBtn.Name = "CancelBtn";
             this.CancelBtn.Size = new System.Drawing.Size(94, 34);
             this.CancelBtn.TabIndex = 16;
@@ -160,7 +160,7 @@
             // 
             this.SaveBtn.BackColor = System.Drawing.Color.LightGreen;
             this.SaveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SaveBtn.Location = new System.Drawing.Point(412, 272);
+            this.SaveBtn.Location = new System.Drawing.Point(373, 259);
             this.SaveBtn.Name = "SaveBtn";
             this.SaveBtn.Size = new System.Drawing.Size(94, 34);
             this.SaveBtn.TabIndex = 17;
@@ -173,14 +173,14 @@
             this.LoadImageBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LoadImageBtn.Location = new System.Drawing.Point(12, 218);
             this.LoadImageBtn.Name = "LoadImageBtn";
-            this.LoadImageBtn.Size = new System.Drawing.Size(194, 29);
+            this.LoadImageBtn.Size = new System.Drawing.Size(150, 53);
             this.LoadImageBtn.TabIndex = 18;
             this.LoadImageBtn.Text = "Загрузить изображение";
             this.LoadImageBtn.UseVisualStyleBackColor = false;
             // 
             // CardNumberMskdTxtBox
             // 
-            this.CardNumberMskdTxtBox.Location = new System.Drawing.Point(385, 133);
+            this.CardNumberMskdTxtBox.Location = new System.Drawing.Point(361, 135);
             this.CardNumberMskdTxtBox.Mask = "000000000000";
             this.CardNumberMskdTxtBox.Name = "CardNumberMskdTxtBox";
             this.CardNumberMskdTxtBox.PromptChar = '#';
@@ -189,7 +189,7 @@
             // 
             // PhoneNumberMskdTxtBox
             // 
-            this.PhoneNumberMskdTxtBox.Location = new System.Drawing.Point(385, 213);
+            this.PhoneNumberMskdTxtBox.Location = new System.Drawing.Point(361, 215);
             this.PhoneNumberMskdTxtBox.Mask = "+7 (999) 000-0000";
             this.PhoneNumberMskdTxtBox.Name = "PhoneNumberMskdTxtBox";
             this.PhoneNumberMskdTxtBox.Size = new System.Drawing.Size(221, 27);
@@ -200,7 +200,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(616, 318);
+            this.ClientSize = new System.Drawing.Size(595, 309);
             this.Controls.Add(this.PhoneNumberMskdTxtBox);
             this.Controls.Add(this.CardNumberMskdTxtBox);
             this.Controls.Add(this.LoadImageBtn);

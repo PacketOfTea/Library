@@ -46,9 +46,9 @@
             this.PublisherLbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.PublisherLbl.Location = new System.Drawing.Point(12, 129);
             this.PublisherLbl.Name = "PublisherLbl";
-            this.PublisherLbl.Size = new System.Drawing.Size(96, 28);
+            this.PublisherLbl.Size = new System.Drawing.Size(136, 28);
             this.PublisherLbl.TabIndex = 17;
-            this.PublisherLbl.Text = "Издатель";
+            this.PublisherLbl.Text = "Издательство";
             // 
             // PublicDateLbl
             // 
