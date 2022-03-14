@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Library
+namespace LibraryForm
 {
     public partial class FirstForm : Form
     {
@@ -21,13 +21,13 @@ namespace Library
 
         private void LoginBtn_Click(object sender, EventArgs e)
         {
-            Library forma = new Library();
+            LibraryForm forma = new LibraryForm();
             forma.Show();
         }
 
         private void CreateCardBtn_Click(object sender, EventArgs e)
         {
-            Reader reader_form = new Reader();
+            ReaderForm reader_form = new ReaderForm();
             reader_form.Owner = this;
             reader_form.ShowDialog();
         }

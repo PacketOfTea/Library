@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Library
+namespace LibraryForm
 {
-    public partial class Search : Form
+    public partial class SearchForm : Form
     {
-        public Search()
+        public SearchForm()
         {
             InitializeComponent();
         }

@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Library
+namespace LibraryForm
 {
-    public partial class Reader : Form
+    public partial class ReaderForm : Form
     {
-        public Reader()
+        public ReaderForm()
         {
             InitializeComponent();
         }

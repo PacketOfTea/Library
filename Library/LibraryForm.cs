@@ -1,8 +1,8 @@
-namespace Library
+namespace LibraryForm
 {
-    public partial class Library : Form
+    public partial class LibraryForm : Form
     {
-        public Library()
+        public LibraryForm()
         {
             InitializeComponent();
         }
@@ -28,7 +28,7 @@ namespace Library
 
         private void ChangeReaderBtn_Click(object sender, EventArgs e)
         {
-            Reader reader_form = new Reader();
+            ReaderForm reader_form = new ReaderForm();
             reader_form.Owner = this;
             reader_form.ShowDialog();
         }
