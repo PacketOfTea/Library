@@ -10,19 +10,24 @@ using System.Windows.Forms;
 
 namespace Library
 {
-    public partial class Form1 : Form
+    public partial class FirstForm : Form
     {
-        public Form1()
+        public FirstForm()
         {
             InitializeComponent();
             this.BackColor = Color.White;
-            panel1.BackColor = Color.FromArgb(220, Color.White);
+            MainPanel.BackColor = Color.FromArgb(220, Color.White);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void LoginBtn_Click(object sender, EventArgs e)
         {
             Library forma = new Library();
             forma.Show();
+        }
+
+        private void CreateCardBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
