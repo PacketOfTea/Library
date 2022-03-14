@@ -32,7 +32,6 @@
             this.ReadersBooksPanel = new System.Windows.Forms.Panel();
             this.TitleReadersBooksLbl = new System.Windows.Forms.Label();
             this.SearchBooksPanel = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.SearchBookBtn = new System.Windows.Forms.Button();
             this.LibraryCardPanel = new System.Windows.Forms.Panel();
             this.PrintCardBtn = new System.Windows.Forms.Button();
@@ -74,20 +73,11 @@
             // 
             this.SearchBooksPanel.BackColor = System.Drawing.Color.FloralWhite;
             this.SearchBooksPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SearchBooksPanel.Controls.Add(this.panel1);
             this.SearchBooksPanel.Controls.Add(this.SearchBookBtn);
             this.SearchBooksPanel.Location = new System.Drawing.Point(353, 12);
             this.SearchBooksPanel.Name = "SearchBooksPanel";
             this.SearchBooksPanel.Size = new System.Drawing.Size(681, 536);
             this.SearchBooksPanel.TabIndex = 2;
-            // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Location = new System.Drawing.Point(7, 51);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(669, 118);
-            this.panel1.TabIndex = 1;
             // 
             // SearchBookBtn
             // 
@@ -252,6 +242,5 @@
         private Button EditReaderBtn;
         private Button ChangeReaderBtn;
         private Button SearchBookBtn;
-        private Panel panel1;
     }
 }
