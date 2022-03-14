@@ -18,5 +18,11 @@ namespace Library
             this.BackColor = Color.White;
             panel1.BackColor = Color.FromArgb(220, Color.White);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Library forma = new Library();
+            forma.Show();
+        }
     }
 }

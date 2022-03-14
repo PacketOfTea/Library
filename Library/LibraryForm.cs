@@ -14,5 +14,11 @@ namespace Library
             //if(LibraryCardPanel.Visible == false)
             //    MessageBox.Show("Для поиска книг необходимо ввести номер читательского билета!");
         }
+
+        private void PrintCardBtn_Click(object sender, EventArgs e)
+        {
+            PrintDialog printDialog = new PrintDialog();
+            printDialog.ShowDialog();
+        }
     }
 }
