@@ -16,5 +16,10 @@ namespace Library
         {
             InitializeComponent();
         }
+
+        private void SaveBtn_Click(object sender, EventArgs e)
+        {
+            NameTxtBox.Text = PhoneNumberMskdTxtBox.Text;
+        }
     }
 }

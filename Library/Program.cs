@@ -1,4 +1,4 @@
-namespace Library
+namespace LibraryForm
 {
     internal static class Program
     {

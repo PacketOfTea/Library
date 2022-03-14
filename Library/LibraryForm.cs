@@ -9,7 +9,7 @@ namespace Library
 
         private void SearchBookBtn_Click(object sender, EventArgs e)
         {
-            Form1 forma = new Form1();
+            FirstForm forma = new FirstForm();
             forma.Show();
             //if(LibraryCardPanel.Visible == false)
             //    MessageBox.Show("Для поиска книг необходимо ввести номер читательского билета!");
@@ -19,6 +19,18 @@ namespace Library
         {
             PrintDialog printDialog = new PrintDialog();
             printDialog.ShowDialog();
+        }
+
+        private void EditReaderBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ChangeReaderBtn_Click(object sender, EventArgs e)
+        {
+            Reader reader_form = new Reader();
+            reader_form.Owner = this;
+            reader_form.ShowDialog();
         }
     }
 }
