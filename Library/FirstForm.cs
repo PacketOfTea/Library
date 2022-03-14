@@ -27,7 +27,9 @@ namespace Library
 
         private void CreateCardBtn_Click(object sender, EventArgs e)
         {
-
+            Reader reader_form = new Reader();
+            reader_form.Owner = this;
+            reader_form.ShowDialog();
         }
     }
 }

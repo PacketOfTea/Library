@@ -1,6 +1,6 @@
-﻿namespace Library
+﻿namespace LibraryForm
 {
-    partial class Reader
+    partial class ReaderForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Reader));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReaderForm));
             this.PhotoPictureBox = new System.Windows.Forms.PictureBox();
             this.SurnameLbl = new System.Windows.Forms.Label();
             this.NameLbl = new System.Windows.Forms.Label();
@@ -166,6 +166,7 @@
             this.SaveBtn.TabIndex = 17;
             this.SaveBtn.Text = "Сохранить";
             this.SaveBtn.UseVisualStyleBackColor = false;
+            this.SaveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
             // 
             // LoadImageBtn
             // 
@@ -195,7 +196,7 @@
             this.PhoneNumberMskdTxtBox.Size = new System.Drawing.Size(221, 27);
             this.PhoneNumberMskdTxtBox.TabIndex = 20;
             // 
-            // Reader
+            // ReaderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -218,7 +219,7 @@
             this.Controls.Add(this.SurnameLbl);
             this.Controls.Add(this.PhotoPictureBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Reader";
+            this.Name = "ReaderForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Читатель";
             ((System.ComponentModel.ISupportInitialize)(this.PhotoPictureBox)).EndInit();

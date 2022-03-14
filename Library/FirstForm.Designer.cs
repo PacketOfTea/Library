@@ -1,6 +1,6 @@
-﻿namespace Library
+﻿namespace LibraryForm
 {
-    partial class Form1
+    partial class FirstForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirstForm));
             this.ReaderCardTxtBox = new System.Windows.Forms.TextBox();
             this.NameLbl = new System.Windows.Forms.Label();
             this.ReaderCardLbl = new System.Windows.Forms.Label();
@@ -121,7 +121,7 @@
             this.MainPanel.Size = new System.Drawing.Size(448, 434);
             this.MainPanel.TabIndex = 6;
             // 
-            // Form1
+            // FirstForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -131,7 +131,7 @@
             this.ClientSize = new System.Drawing.Size(1046, 560);
             this.Controls.Add(this.MainPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
+            this.Name = "FirstForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Библиотека";
             this.MainPanel.ResumeLayout(false);

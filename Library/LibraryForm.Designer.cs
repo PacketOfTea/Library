@@ -1,6 +1,6 @@
-﻿namespace Library
+﻿namespace LibraryForm
 {
-    partial class Library
+    partial class LibraryForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Library));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LibraryForm));
             this.ReadersBooksPanel = new System.Windows.Forms.Panel();
             this.TitleReadersBooksLbl = new System.Windows.Forms.Label();
             this.SearchBooksPanel = new System.Windows.Forms.Panel();
@@ -132,6 +132,7 @@
             this.EditReaderBtn.Size = new System.Drawing.Size(30, 30);
             this.EditReaderBtn.TabIndex = 9;
             this.EditReaderBtn.UseVisualStyleBackColor = true;
+            this.EditReaderBtn.Click += new System.EventHandler(this.EditReaderBtn_Click);
             // 
             // ChangeReaderBtn
             // 
@@ -143,6 +144,7 @@
             this.ChangeReaderBtn.Size = new System.Drawing.Size(30, 30);
             this.ChangeReaderBtn.TabIndex = 6;
             this.ChangeReaderBtn.UseVisualStyleBackColor = true;
+            this.ChangeReaderBtn.Click += new System.EventHandler(this.ChangeReaderBtn_Click);
             // 
             // PatronymicLbl
             // 
@@ -203,7 +205,7 @@
             this.PhotoPictureBox.TabIndex = 0;
             this.PhotoPictureBox.TabStop = false;
             // 
-            // Library
+            // LibraryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -214,7 +216,7 @@
             this.Controls.Add(this.SearchBooksPanel);
             this.Controls.Add(this.ReadersBooksPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Library";
+            this.Name = "LibraryForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Библиотека";
             this.ReadersBooksPanel.ResumeLayout(false);
