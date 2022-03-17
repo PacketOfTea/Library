@@ -32,6 +32,8 @@
             this.ReadersBooksPanel = new System.Windows.Forms.Panel();
             this.TitleReadersBooksLbl = new System.Windows.Forms.Label();
             this.SearchBooksPanel = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.SearchBookBtn = new System.Windows.Forms.Button();
             this.LibraryCardPanel = new System.Windows.Forms.Panel();
             this.PrintCardBtn = new System.Windows.Forms.Button();
@@ -43,8 +45,16 @@
             this.CardNumberLbl = new System.Windows.Forms.Label();
             this.ReadersCardLbl = new System.Windows.Forms.Label();
             this.PhotoPictureBox = new System.Windows.Forms.PictureBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             this.ReadersBooksPanel.SuspendLayout();
             this.SearchBooksPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.LibraryCardPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PhotoPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -53,6 +63,12 @@
             // 
             this.ReadersBooksPanel.BackColor = System.Drawing.Color.FloralWhite;
             this.ReadersBooksPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ReadersBooksPanel.Controls.Add(this.textBox6);
+            this.ReadersBooksPanel.Controls.Add(this.textBox5);
+            this.ReadersBooksPanel.Controls.Add(this.textBox4);
+            this.ReadersBooksPanel.Controls.Add(this.textBox3);
+            this.ReadersBooksPanel.Controls.Add(this.textBox2);
+            this.ReadersBooksPanel.Controls.Add(this.textBox1);
             this.ReadersBooksPanel.Controls.Add(this.TitleReadersBooksLbl);
             this.ReadersBooksPanel.Location = new System.Drawing.Point(12, 224);
             this.ReadersBooksPanel.Name = "ReadersBooksPanel";
@@ -73,11 +89,34 @@
             // 
             this.SearchBooksPanel.BackColor = System.Drawing.Color.FloralWhite;
             this.SearchBooksPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.SearchBooksPanel.Controls.Add(this.button2);
+            this.SearchBooksPanel.Controls.Add(this.button1);
+            this.SearchBooksPanel.Controls.Add(this.dataGridView1);
             this.SearchBooksPanel.Controls.Add(this.SearchBookBtn);
             this.SearchBooksPanel.Location = new System.Drawing.Point(353, 12);
             this.SearchBooksPanel.Name = "SearchBooksPanel";
             this.SearchBooksPanel.Size = new System.Drawing.Size(681, 536);
             this.SearchBooksPanel.TabIndex = 2;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(186, 5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(113, 41);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(-1, 52);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 29;
+            this.dataGridView1.Size = new System.Drawing.Size(681, 483);
+            this.dataGridView1.TabIndex = 1;
             // 
             // SearchBookBtn
             // 
@@ -199,11 +238,64 @@
             // PhotoPictureBox
             // 
             this.PhotoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PhotoPictureBox.ImageLocation = "";
             this.PhotoPictureBox.Location = new System.Drawing.Point(3, 3);
             this.PhotoPictureBox.Name = "PhotoPictureBox";
             this.PhotoPictureBox.Size = new System.Drawing.Size(90, 120);
             this.PhotoPictureBox.TabIndex = 0;
             this.PhotoPictureBox.TabStop = false;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(419, 7);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(194, 39);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Добавить книгу";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(3, 31);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(326, 27);
+            this.textBox1.TabIndex = 1;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(3, 64);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(326, 27);
+            this.textBox2.TabIndex = 2;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(3, 97);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(326, 27);
+            this.textBox3.TabIndex = 3;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(3, 130);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(326, 27);
+            this.textBox4.TabIndex = 4;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(3, 163);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(326, 27);
+            this.textBox5.TabIndex = 5;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(3, 196);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(326, 27);
+            this.textBox6.TabIndex = 6;
             // 
             // LibraryForm
             // 
@@ -222,6 +314,7 @@
             this.ReadersBooksPanel.ResumeLayout(false);
             this.ReadersBooksPanel.PerformLayout();
             this.SearchBooksPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.LibraryCardPanel.ResumeLayout(false);
             this.LibraryCardPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PhotoPictureBox)).EndInit();
@@ -244,5 +337,14 @@
         private Button EditReaderBtn;
         private Button ChangeReaderBtn;
         private Button SearchBookBtn;
+        private DataGridView dataGridView1;
+        private Button button1;
+        private Button button2;
+        private TextBox textBox1;
+        private TextBox textBox6;
+        private TextBox textBox5;
+        private TextBox textBox4;
+        private TextBox textBox3;
+        private TextBox textBox2;
     }
 }
