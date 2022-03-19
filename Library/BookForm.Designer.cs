@@ -94,7 +94,6 @@
             this.PublicDateTxtBox.Name = "PublicDateTxtBox";
             this.PublicDateTxtBox.Size = new System.Drawing.Size(221, 27);
             this.PublicDateTxtBox.TabIndex = 30;
-            this.PublicDateTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumberOfBooksTxtBox_KeyPress);
             // 
             // TittleTxtBox
             // 
