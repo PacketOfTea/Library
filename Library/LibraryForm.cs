@@ -20,11 +20,10 @@ namespace LibraryForm
         public LibraryForm()
         {
             InitializeComponent();
-            sqlConnection = new SqlConnection("Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFilename = C:\\Users\\User\\OneDrive - ФГБОУ ВО УГАТУ\\Рабочий стол\\УНИВЕР\\3 КУРС\\6 СЕМЕСТР\\Проектирование человеко-машинного интерфейса\\Library\\Library\\LibraryDB.mdf; Integrated Security = True");
+            sqlConnection = new SqlConnection("Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFilename = C:\\Data\\Projects\\6 Семестр\\Library\\Library\\LibraryDB.mdf; Integrated Security = True");
             sqlConnection.Open();
         }
         
-
 
         private void SearchBookBtn_Click(object sender, EventArgs e)
         {
@@ -60,56 +59,62 @@ namespace LibraryForm
             DataSet dataset = new DataSet();
             dataAdapter.Fill(dataset);
             dataGridView1.DataSource = dataset.Tables[0];
-            //dataGridView1.Columns[0].Width = 23;
-            //dataGridView1.Columns[1].Width = 100;
-            //dataGridView1.Columns[2].Width = 100;
-            //dataGridView1.Columns[3].Width = 107;
-            //dataGridView1.Columns[4].Width = 73;
-            //dataGridView1.Columns[5].Width = 130;
-            //dataGridView1.Columns[6].Width = 250;
-            //dataGridView1.Columns[7].Width = 90;
-            //dataGridView1.Columns[8].Width = 70;
-            //dataGridView1.Columns[9].Width = 171;
-            //dataGridView1.Columns[10].Width = 91;
-            //dataGridView1.Columns[11].Width = 463;
-            //dataGridView1.Columns[12].Width = 228;
+            dataGridView1.Columns[0].Width = 50;
+            dataGridView1.Columns[1].Width = 290;
+            dataGridView1.Columns[2].Width = 188;
+            dataGridView1.Columns[3].Width = 75;
+            dataGridView1.Columns[4].Width = 150;
+            dataGridView1.Columns[5].Width = 87;
+            dataGridView1.Columns[6].Width = 93;
+            dataGridView1.ClearSelection();
         }
 
-        public void sqladd(SqlCommand command, string message)
+        BookForm bookform;
+        public Book SelectedBook;
+        private void AddBookBtn_Click(object sender, EventArgs e)
         {
+            bookform = new BookForm(false, sqlConnection);
+            bookform.Owner = this;
+            bookform.ShowDialog();
+        }
+
+        private void EditBookBtn_Click(object sender, EventArgs e)
+        {
+            if (SelectedBook.id != 0)
+            {
+                bookform = new BookForm(true, SelectedBook, sqlConnection);
+                bookform.Owner = this;
+                bookform.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Выберите книгу для редактирования");
+            }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+#pragma warning disable CS8601 // Возможно, назначение-ссылка, допускающее значение NULL.
             try
             {
-                command.Parameters.AddWithValue("Название_книги", textBox1.Text);
-                command.Parameters.AddWithValue("Автор_книги", textBox2.Text);
-                command.Parameters.AddWithValue("Дата_издания", textBox3.Text);
-                command.Parameters.AddWithValue("Издательство", textBox4.Text);
-                command.Parameters.AddWithValue("Обложка", textBox5.Text);
-                command.Parameters.AddWithValue("Наличие", textBox6.Text);
-
-                if (command.ExecuteNonQuery() == 1)
-                {
-                    MessageBox.Show(message);
-                }
+                SelectedBook.id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                SelectedBook.Title = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+                SelectedBook.Author = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+                SelectedBook.PublicDate = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
+                SelectedBook.Publisher = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
+                SelectedBook.PhotoPictureBox = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();
+                SelectedBook.NumberOfBooks = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
             }
+#pragma warning restore CS8601 // Возможно, назначение-ссылка, допускающее значение NULL.
         }
 
-
-        private void button1_Click(object sender, EventArgs e)
+        private void LibraryForm_Load(object sender, EventArgs e)
         {
-            showDB_BOOKS();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            SqlCommand sqlCommand = new SqlCommand($"Insert INTO [Книги] ([Название книги], [Автор книги], [Дата издания], " +
-                "[Издательство], [Обложка], [Наличие]) " +
-                "VALUES (@Название_книги, @Автор_книги, @Дата_издания, @Издательство, @Обложка, @Наличие)", sqlConnection);
-            sqladd(sqlCommand, "Книга добавлена в БД");
-            showDB_BOOKS();
+            showDB_BOOKS();        
         }
     }
 }
