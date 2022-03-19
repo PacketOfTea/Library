@@ -40,11 +40,12 @@
             this.NameTxtBox = new System.Windows.Forms.TextBox();
             this.PatronymicTxtBox = new System.Windows.Forms.TextBox();
             this.AddressTxtBox = new System.Windows.Forms.TextBox();
-            this.CancelBtn = new System.Windows.Forms.Button();
+            this.DeleteBtn = new System.Windows.Forms.Button();
             this.SaveBtn = new System.Windows.Forms.Button();
             this.LoadImageBtn = new System.Windows.Forms.Button();
             this.CardNumberMskdTxtBox = new System.Windows.Forms.MaskedTextBox();
             this.PhoneNumberMskdTxtBox = new System.Windows.Forms.MaskedTextBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.PhotoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -145,16 +146,17 @@
             this.AddressTxtBox.Size = new System.Drawing.Size(221, 27);
             this.AddressTxtBox.TabIndex = 14;
             // 
-            // CancelBtn
+            // DeleteBtn
             // 
-            this.CancelBtn.BackColor = System.Drawing.Color.LightCoral;
-            this.CancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CancelBtn.Location = new System.Drawing.Point(473, 259);
-            this.CancelBtn.Name = "CancelBtn";
-            this.CancelBtn.Size = new System.Drawing.Size(94, 34);
-            this.CancelBtn.TabIndex = 16;
-            this.CancelBtn.Text = "Отменить";
-            this.CancelBtn.UseVisualStyleBackColor = false;
+            this.DeleteBtn.BackColor = System.Drawing.Color.LightCoral;
+            this.DeleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteBtn.Location = new System.Drawing.Point(473, 259);
+            this.DeleteBtn.Name = "DeleteBtn";
+            this.DeleteBtn.Size = new System.Drawing.Size(94, 34);
+            this.DeleteBtn.TabIndex = 16;
+            this.DeleteBtn.Text = "Удалить";
+            this.DeleteBtn.UseVisualStyleBackColor = false;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
             // SaveBtn
             // 
@@ -178,6 +180,7 @@
             this.LoadImageBtn.TabIndex = 18;
             this.LoadImageBtn.Text = "Загрузить изображение";
             this.LoadImageBtn.UseVisualStyleBackColor = false;
+            this.LoadImageBtn.Click += new System.EventHandler(this.LoadImageBtn_Click);
             // 
             // CardNumberMskdTxtBox
             // 
@@ -187,6 +190,7 @@
             this.CardNumberMskdTxtBox.PromptChar = '#';
             this.CardNumberMskdTxtBox.Size = new System.Drawing.Size(221, 27);
             this.CardNumberMskdTxtBox.TabIndex = 19;
+            this.CardNumberMskdTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CardNumberMskdTxtBox_KeyPress);
             // 
             // PhoneNumberMskdTxtBox
             // 
@@ -195,6 +199,11 @@
             this.PhoneNumberMskdTxtBox.Name = "PhoneNumberMskdTxtBox";
             this.PhoneNumberMskdTxtBox.Size = new System.Drawing.Size(221, 27);
             this.PhoneNumberMskdTxtBox.TabIndex = 20;
+            this.PhoneNumberMskdTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CardNumberMskdTxtBox_KeyPress);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // ReaderForm
             // 
@@ -206,7 +215,7 @@
             this.Controls.Add(this.CardNumberMskdTxtBox);
             this.Controls.Add(this.LoadImageBtn);
             this.Controls.Add(this.SaveBtn);
-            this.Controls.Add(this.CancelBtn);
+            this.Controls.Add(this.DeleteBtn);
             this.Controls.Add(this.AddressTxtBox);
             this.Controls.Add(this.PatronymicTxtBox);
             this.Controls.Add(this.NameTxtBox);
@@ -241,10 +250,11 @@
         private TextBox NameTxtBox;
         private TextBox PatronymicTxtBox;
         private TextBox AddressTxtBox;
-        private Button CancelBtn;
+        private Button DeleteBtn;
         private Button SaveBtn;
         private Button LoadImageBtn;
         private MaskedTextBox CardNumberMskdTxtBox;
         private MaskedTextBox PhoneNumberMskdTxtBox;
+        private OpenFileDialog openFileDialog1;
     }
 }

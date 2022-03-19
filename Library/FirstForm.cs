@@ -27,9 +27,17 @@ namespace LibraryForm
             forma.Show();
         }
 
+        private SqlConnection sqlConnection;
+
         private void CreateCardBtn_Click(object sender, EventArgs e)
         {
-            ReaderForm reader_form = new ReaderForm();
+            string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+            sqlConnection = new SqlConnection($"Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFilename = {path}\\LibraryDB.mdf; Integrated Security = True");
+            if (sqlConnection.State != ConnectionState.Open)
+            {
+                sqlConnection.Open();
+            }
+            ReaderForm reader_form = new ReaderForm(false, sqlConnection);
             reader_form.Owner = this;
             reader_form.ShowDialog();
         }
