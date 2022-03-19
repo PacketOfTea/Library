@@ -1,4 +1,4 @@
-﻿namespace Library
+﻿namespace LibraryForm
 {
     partial class BookForm
     {
@@ -31,10 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BookForm));
             this.LoadImageBtn = new System.Windows.Forms.Button();
             this.SaveBtn = new System.Windows.Forms.Button();
-            this.CancelBtn = new System.Windows.Forms.Button();
+            this.DeleteBtn = new System.Windows.Forms.Button();
             this.PublisherTxtBox = new System.Windows.Forms.TextBox();
             this.PublicDateTxtBox = new System.Windows.Forms.TextBox();
-            this.NameTxtBox = new System.Windows.Forms.TextBox();
+            this.TittleTxtBox = new System.Windows.Forms.TextBox();
             this.AuthorTxtBox = new System.Windows.Forms.TextBox();
             this.PublisherLbl = new System.Windows.Forms.Label();
             this.PublicDateLbl = new System.Windows.Forms.Label();
@@ -67,17 +67,19 @@
             this.SaveBtn.TabIndex = 33;
             this.SaveBtn.Text = "Сохранить";
             this.SaveBtn.UseVisualStyleBackColor = false;
+            this.SaveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
             // 
-            // CancelBtn
+            // DeleteBtn
             // 
-            this.CancelBtn.BackColor = System.Drawing.Color.LightCoral;
-            this.CancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CancelBtn.Location = new System.Drawing.Point(474, 239);
-            this.CancelBtn.Name = "CancelBtn";
-            this.CancelBtn.Size = new System.Drawing.Size(94, 34);
-            this.CancelBtn.TabIndex = 32;
-            this.CancelBtn.Text = "Отменить";
-            this.CancelBtn.UseVisualStyleBackColor = false;
+            this.DeleteBtn.BackColor = System.Drawing.Color.LightCoral;
+            this.DeleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteBtn.Location = new System.Drawing.Point(474, 239);
+            this.DeleteBtn.Name = "DeleteBtn";
+            this.DeleteBtn.Size = new System.Drawing.Size(94, 34);
+            this.DeleteBtn.TabIndex = 32;
+            this.DeleteBtn.Text = "Удалить";
+            this.DeleteBtn.UseVisualStyleBackColor = false;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
             // PublisherTxtBox
             // 
@@ -92,13 +94,14 @@
             this.PublicDateTxtBox.Name = "PublicDateTxtBox";
             this.PublicDateTxtBox.Size = new System.Drawing.Size(221, 27);
             this.PublicDateTxtBox.TabIndex = 30;
+            this.PublicDateTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumberOfBooksTxtBox_KeyPress);
             // 
-            // NameTxtBox
+            // TittleTxtBox
             // 
-            this.NameTxtBox.Location = new System.Drawing.Point(361, 57);
-            this.NameTxtBox.Name = "NameTxtBox";
-            this.NameTxtBox.Size = new System.Drawing.Size(221, 27);
-            this.NameTxtBox.TabIndex = 29;
+            this.TittleTxtBox.Location = new System.Drawing.Point(361, 57);
+            this.TittleTxtBox.Name = "TittleTxtBox";
+            this.TittleTxtBox.Size = new System.Drawing.Size(221, 27);
+            this.TittleTxtBox.TabIndex = 29;
             // 
             // AuthorTxtBox
             // 
@@ -162,6 +165,7 @@
             this.NumberOfBooksTxtBox.Name = "NumberOfBooksTxtBox";
             this.NumberOfBooksTxtBox.Size = new System.Drawing.Size(221, 27);
             this.NumberOfBooksTxtBox.TabIndex = 36;
+            this.NumberOfBooksTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumberOfBooksTxtBox_KeyPress);
             // 
             // NumberOfBooksLbl
             // 
@@ -183,10 +187,10 @@
             this.Controls.Add(this.NumberOfBooksLbl);
             this.Controls.Add(this.LoadImageBtn);
             this.Controls.Add(this.SaveBtn);
-            this.Controls.Add(this.CancelBtn);
+            this.Controls.Add(this.DeleteBtn);
             this.Controls.Add(this.PublisherTxtBox);
             this.Controls.Add(this.PublicDateTxtBox);
-            this.Controls.Add(this.NameTxtBox);
+            this.Controls.Add(this.TittleTxtBox);
             this.Controls.Add(this.AuthorTxtBox);
             this.Controls.Add(this.PublisherLbl);
             this.Controls.Add(this.PublicDateLbl);
@@ -196,6 +200,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "BookForm";
             this.Text = "Добавление книги";
+            this.Load += new System.EventHandler(this.BookForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PhotoPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -205,10 +210,10 @@
         #endregion
         private Button LoadImageBtn;
         private Button SaveBtn;
-        private Button CancelBtn;
+        private Button DeleteBtn;
         private TextBox PublisherTxtBox;
         private TextBox PublicDateTxtBox;
-        private TextBox NameTxtBox;
+        private TextBox TittleTxtBox;
         private TextBox AuthorTxtBox;
         private Label PublisherLbl;
         private Label PublicDateLbl;
