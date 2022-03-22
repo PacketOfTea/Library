@@ -52,9 +52,11 @@
             // PhotoPictureBox
             // 
             this.PhotoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PhotoPictureBox.Image = global::Library.Properties.Resources.NoPhoto;
             this.PhotoPictureBox.Location = new System.Drawing.Point(12, 12);
             this.PhotoPictureBox.Name = "PhotoPictureBox";
             this.PhotoPictureBox.Size = new System.Drawing.Size(150, 200);
+            this.PhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PhotoPictureBox.TabIndex = 1;
             this.PhotoPictureBox.TabStop = false;
             // 
@@ -231,6 +233,7 @@
             this.Name = "ReaderForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Читатель";
+            this.Load += new System.EventHandler(this.ReaderForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PhotoPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

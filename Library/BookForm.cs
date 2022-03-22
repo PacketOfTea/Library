@@ -106,8 +106,10 @@ namespace LibraryForm
 						break;
 				}
 				main.showDB_BOOKS();
-				main.SelectedBook.clear();
-				this.Close();
+#pragma warning disable CS1690 // Доступ к члену в поле класса маршалинга по ссылке может вызвать исключение времени выполнения
+                main.SelectedBook.clear();
+#pragma warning restore CS1690 // Доступ к члену в поле класса маршалинга по ссылке может вызвать исключение времени выполнения
+                this.Close();
 			}
 		}
 
@@ -127,8 +129,10 @@ namespace LibraryForm
 				MessageBox.Show(ex.Message);
 			}
 			main.showDB_BOOKS();
-			main.SelectedBook.clear();
-			this.Close();
+#pragma warning disable CS1690 // Доступ к члену в поле класса маршалинга по ссылке может вызвать исключение времени выполнения
+            main.SelectedBook.clear();
+#pragma warning restore CS1690 // Доступ к члену в поле класса маршалинга по ссылке может вызвать исключение времени выполнения
+            this.Close();
 		}
 
 		private void NumberOfBooksTxtBox_KeyPress(object sender, KeyPressEventArgs e)

@@ -7,7 +7,8 @@ namespace LibraryForm
     public partial class LibraryForm : Form
     {
         private SqlConnection sqlConnection;
-        public Reader SelectedReader;
+        private Reader CurrentReader;
+        private FirstForm login;
 
         public LibraryForm(Reader reader)
         {
@@ -20,13 +21,16 @@ namespace LibraryForm
             {
                 sqlConnection.Open();
             }
-            SelectedReader = reader;
+            CurrentReader = reader;
         }
 
         private void LibraryForm_Load(object sender, EventArgs e)
         {
             showReader();
             showDB_BOOKS();
+#pragma warning disable CS8601 // Возможно, назначение-ссылка, допускающее значение NULL.
+            login = this.Owner as FirstForm;
+#pragma warning restore CS8601 // Возможно, назначение-ссылка, допускающее значение NULL.
         }
 
         private void SearchBookBtn_Click(object sender, EventArgs e)
@@ -43,18 +47,24 @@ namespace LibraryForm
             printDialog.ShowDialog();
         }
 
+        ReaderForm reader_form;
         private void EditReaderBtn_Click(object sender, EventArgs e)
         {
-
+            reader_form = new ReaderForm(true, CurrentReader, sqlConnection);
+            reader_form.Owner = this;
+            reader_form.ShowDialog();
         }
-
-        ReaderForm reader_form;
 
         private void ChangeReaderBtn_Click(object sender, EventArgs e)
         {
-            reader_form = new ReaderForm(false, sqlConnection);
-            reader_form.Owner = this;
-            reader_form.ShowDialog();
+            this.Close();
+            login.Show();
+        }
+
+        public void UpdateReader(Reader reader)
+        {
+            CurrentReader = reader;
+            showReader();
         }
 
         public void showDB_BOOKS()
@@ -77,13 +87,13 @@ namespace LibraryForm
 
         public void showReader()
         {
-            CardNumberLbl.Text = SelectedReader.Library_card_number;
-            SurnameLbl.Text = SelectedReader.Surname;
-            NameLbl.Text = SelectedReader.Name;
-            PatronymicLbl.Text = SelectedReader.Patronymic;
+            CardNumberLbl.Text = CurrentReader.Library_card_number;
+            SurnameLbl.Text = CurrentReader.Surname;
+            NameLbl.Text = CurrentReader.Name;
+            PatronymicLbl.Text = CurrentReader.Patronymic;
             try
             {
-                PhotoPictureBox.Load(SelectedReader.Photo);
+                PhotoPictureBox.Image = CurrentReader.Photo;
             }
             catch (Exception)
             {
@@ -135,5 +145,9 @@ namespace LibraryForm
 #pragma warning restore CS8601 // Возможно, назначение-ссылка, допускающее значение NULL.
         }
 
+        private void LibraryForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            login.Show();
+        }
     }
 }

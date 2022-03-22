@@ -31,12 +31,22 @@ namespace LibraryForm
 			this.Text = "Редактирование читателя";
 		}
 
-		private void BookForm_Load(object sender, EventArgs e)
+		private void ReaderForm_Load(object sender, EventArgs e)
 		{
-#pragma warning disable CS8601 // Возможно, назначение-ссылка, допускающее значение NULL.
 			main = this.Owner as LibraryForm;
-#pragma warning restore CS8601 // Возможно, назначение-ссылка, допускающее значение NULL.
 			fillData(CurrentReader);
+		}
+
+		private void UpdateReaderFromTxtBox()
+        {
+			//SelectedReader.id = Convert.ToInt32(dataset.Tables[0].Rows[0][0]);
+			CurrentReader.Surname = SurnameTxtBox.Text;
+			CurrentReader.Name = NameTxtBox.Text;
+			CurrentReader.Patronymic = PatronymicTxtBox.Text;
+			CurrentReader.Library_card_number = CardNumberMskdTxtBox.Text;
+			CurrentReader.Аddress = AddressTxtBox.Text;
+			CurrentReader.Phone_number = PhoneNumberMskdTxtBox.Text;
+			CurrentReader.Photo = PhotoPictureBox.Image;
 		}
 
 		public void sqladd(SqlCommand command, string message)
@@ -88,7 +98,7 @@ namespace LibraryForm
 			PhoneNumberMskdTxtBox.Text = CurrentReader.Phone_number;
 			try
 			{
-				PhotoPictureBox.Load(CurrentReader.Photo);
+				PhotoPictureBox.Image = CurrentReader.Photo;
 			}
 			catch (Exception)
 			{
@@ -115,9 +125,11 @@ namespace LibraryForm
 						sqladd(sqlCommand, "Читатель добавлен в БД");
 						break;
 					case true:
-						sqlCommand = new SqlCommand($"Update [Читатели] set [Фамилия] = @Фамилия, [Имя] = @Имя, [Отчество] = @Отчество, [Номер читательского билета] = @Номер_читательского_билета, [Адрес] = @Адрес, [Номер_телефона] = @Номер_телефона, [Фото] = @Фото " +
+						sqlCommand = new SqlCommand($"Update [Читатели] set [Фамилия] = @Фамилия, [Имя] = @Имя, [Отчество] = @Отчество, [Номер читательского билета] = @Номер_читательского_билета, [Адрес] = @Адрес, [Номер телефона] = @Номер_телефона, [Фото] = @Фото " +
 								$"Where Id={CurrentReader.id}", sqlConnection);
 						sqladd(sqlCommand, "Читатель изменен в БД");
+						UpdateReaderFromTxtBox();
+						main.UpdateReader(CurrentReader);
 						break;
 				}
 				//main.showDB_BOOKS();
