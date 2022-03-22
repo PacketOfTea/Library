@@ -7,8 +7,9 @@ namespace LibraryForm
     public partial class LibraryForm : Form
     {
         private SqlConnection sqlConnection;
+        private FirstForm? login;
         private Reader CurrentReader;
-        private FirstForm login;
+        public Book SelectedBook;
 
         public LibraryForm(Reader reader)
         {
@@ -46,7 +47,7 @@ namespace LibraryForm
             printDialog.ShowDialog();
         }
 
-        ReaderForm reader_form;
+        ReaderForm? reader_form;
         private void EditReaderBtn_Click(object sender, EventArgs e)
         {
             reader_form = new ReaderForm(true, CurrentReader, sqlConnection);
@@ -57,7 +58,9 @@ namespace LibraryForm
         private void ChangeReaderBtn_Click(object sender, EventArgs e)
         {
             this.Close();
+#pragma warning disable CS8602 // –азыменование веро€тной пустой ссылки.
             login.ChangeTextCardNumber("");
+#pragma warning restore CS8602 // –азыменование веро€тной пустой ссылки.
             login.Show();
         }
 
@@ -83,8 +86,6 @@ namespace LibraryForm
             dataGridView1.Columns[5].Visible = false;
             dataGridView1.Columns[6].Width = 103;
             dataGridView1.ClearSelection();
-
-
         }
 
         public void showReader()
@@ -100,12 +101,10 @@ namespace LibraryForm
             catch (Exception)
             {
 
-            }
-            
+            }           
         }
 
-        BookForm bookform;
-        public Book SelectedBook;
+        BookForm? bookform;
         private void AddBookBtn_Click(object sender, EventArgs e)
         {
             bookform = new BookForm(false, sqlConnection);
@@ -155,7 +154,9 @@ namespace LibraryForm
 
         private void LibraryForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+#pragma warning disable CS8602 // –азыменование веро€тной пустой ссылки.
             login.Show();
+#pragma warning restore CS8602 // –азыменование веро€тной пустой ссылки.
         }
     }
 }
