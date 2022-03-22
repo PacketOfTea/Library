@@ -35,10 +35,9 @@ namespace LibraryForm
 
         private void SearchBookBtn_Click(object sender, EventArgs e)
         {
-            FirstForm forma = new FirstForm();
-            forma.Show();
-            //if(LibraryCardPanel.Visible == false)
-            //    MessageBox.Show("Для поиска книг необходимо ввести номер читательского билета!");
+            SearchForm search_form = new SearchForm();
+            search_form.Owner = this;
+            search_form.Show();
         }
 
         private void PrintCardBtn_Click(object sender, EventArgs e)
@@ -58,6 +57,7 @@ namespace LibraryForm
         private void ChangeReaderBtn_Click(object sender, EventArgs e)
         {
             this.Close();
+            login.ChangeTextCardNumber("");
             login.Show();
         }
 
