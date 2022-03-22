@@ -34,7 +34,7 @@ namespace LibraryForm
 			}
 		}
 
-		public Reader SelectedReader;
+		private Reader SelectedReader;
 
 		private void LoginBtn_Click(object sender, EventArgs e)
 		{
@@ -53,10 +53,21 @@ namespace LibraryForm
 				SelectedReader.Library_card_number = dataset.Tables[0].Rows[0][4].ToString();
 				SelectedReader.Аddress = dataset.Tables[0].Rows[0][5].ToString();
 				SelectedReader.Phone_number = dataset.Tables[0].Rows[0][6].ToString();
-				SelectedReader.Photo = dataset.Tables[0].Rows[0][7].ToString();
+                try
+                {
+					byte[] imgData = (byte[])dataset.Tables[0].Rows[0][7];
+					MemoryStream ms = new MemoryStream(imgData);
+					SelectedReader.Photo = Image.FromStream(ms);
+				}
+                catch (Exception ex)
+                {
+					MessageBox.Show(ex.ToString());
+                }
+                
 				LibraryForm forma = new LibraryForm(SelectedReader);
+				forma.Owner = this;
+				this.Hide();
 				forma.Show();
-
 			}
 			else
             {

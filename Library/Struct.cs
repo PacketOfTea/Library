@@ -32,7 +32,7 @@ namespace LibraryForm
 		public string? Library_card_number;
 		public string? Аddress;
 		public string? Phone_number;
-		public string? Photo;
+		public Image? Photo;
 
 		public void clear()
 		{
@@ -43,7 +43,7 @@ namespace LibraryForm
 			Library_card_number = null;
 			Аddress = null;
 			Phone_number = null;
-			Photo = null;
+			Photo = Library.Properties.Resources.NoPhoto;
 		}
 	}
 }
