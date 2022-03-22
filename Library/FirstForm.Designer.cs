@@ -43,6 +43,7 @@
             // 
             this.ReaderCardTxtBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ReaderCardTxtBox.Location = new System.Drawing.Point(55, 161);
+            this.ReaderCardTxtBox.MaxLength = 12;
             this.ReaderCardTxtBox.Name = "ReaderCardTxtBox";
             this.ReaderCardTxtBox.Size = new System.Drawing.Size(361, 34);
             this.ReaderCardTxtBox.TabIndex = 0;
@@ -134,6 +135,7 @@
             this.Name = "FirstForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Библиотека";
+            this.Load += new System.EventHandler(this.FirstForm_Load);
             this.MainPanel.ResumeLayout(false);
             this.MainPanel.PerformLayout();
             this.ResumeLayout(false);
