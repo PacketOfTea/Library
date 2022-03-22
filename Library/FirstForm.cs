@@ -22,7 +22,7 @@ namespace LibraryForm
 		}
 
 
-		private SqlConnection sqlConnection;
+		private SqlConnection? sqlConnection;
 
 		private void FirstForm_Load(object sender, EventArgs e)
 		{

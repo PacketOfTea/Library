@@ -9,8 +9,8 @@ namespace LibraryForm
 {
 	public partial class ReaderForm : Form
 	{
-		LibraryForm main;
-		FirstForm login;
+		LibraryForm? main;
+		FirstForm? login;
 		private SqlConnection sqlConnection;
 		bool ModeEdit = false;
 		Reader CurrentReader;
@@ -72,8 +72,10 @@ namespace LibraryForm
 				{			
 					byte[] arr_picture;
 					ImageConverter converter = new ImageConverter();
-					arr_picture = (byte[])converter.ConvertTo(CurrentReader.Photo, typeof(byte[]));
-					command.Parameters.AddWithValue("Фото", arr_picture);
+#pragma warning disable CS8600 // Преобразование литерала, допускающего значение NULL или возможного значения NULL в тип, не допускающий значение NULL.
+                    arr_picture = (byte[])converter.ConvertTo(CurrentReader.Photo, typeof(byte[]));
+#pragma warning restore CS8600 // Преобразование литерала, допускающего значение NULL или возможного значения NULL в тип, не допускающий значение NULL.
+                    command.Parameters.AddWithValue("Фото", arr_picture);
 				}		
 				if (command.ExecuteNonQuery() == 1)
 				{
@@ -130,16 +132,22 @@ namespace LibraryForm
 							"VALUES (@Фамилия, @Имя, @Отчество, @Номер_читательского_билета, @Адрес, @Номер_телефона, " +
                             "@Фото)", sqlConnection);
 						sqladd(sqlCommand, "Читатель добавлен в БД");
-						login.ChangeTextCardNumber(CurrentReader.Library_card_number);
-						break;
+#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
+#pragma warning disable CS8604 // Возможно, аргумент-ссылка, допускающий значение NULL.
+                        login.ChangeTextCardNumber(CurrentReader.Library_card_number);
+#pragma warning restore CS8604 // Возможно, аргумент-ссылка, допускающий значение NULL.
+#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
+                        break;
 					case true:
 						sqlCommand = new SqlCommand($"Update [Читатели] set [Фамилия] = @Фамилия, [Имя] = @Имя, " +
                             "[Отчество] = @Отчество, [Номер читательского билета] = @Номер_читательского_билета, " +
                             "[Адрес] = @Адрес, [Номер телефона] = @Номер_телефона, [Фото] = @Фото " +
 							$"Where Id={CurrentReader.id}", sqlConnection);
 						sqladd(sqlCommand, "Читатель изменен в БД");
-						main.UpdateReader(CurrentReader);
-						break;
+#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
+                        main.UpdateReader(CurrentReader);
+#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
+                        break;
 				}
 
 				this.Close();

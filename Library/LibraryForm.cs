@@ -7,8 +7,9 @@ namespace LibraryForm
     public partial class LibraryForm : Form
     {
         private SqlConnection sqlConnection;
+        private FirstForm? login;
         private Reader CurrentReader;
-        private FirstForm login;
+        public Book SelectedBook;
 
         public LibraryForm(Reader reader)
         {
@@ -27,17 +28,22 @@ namespace LibraryForm
         private void LibraryForm_Load(object sender, EventArgs e)
         {
             showReader();
-            showDB_BOOKS();
+            showDB_BOOKS(fillDatatableBooks());
 #pragma warning disable CS8601 // Возможно, назначение-ссылка, допускающее значение NULL.
             login = this.Owner as FirstForm;
 #pragma warning restore CS8601 // Возможно, назначение-ссылка, допускающее значение NULL.
         }
-
+        SearchForm search_form; 
         private void SearchBookBtn_Click(object sender, EventArgs e)
         {
-            SearchForm search_form = new SearchForm();
-            search_form.Owner = this;
-            search_form.Show();
+            if (search_form == null || search_form.IsDisposed)
+            {
+                search_form = new SearchForm(sqlConnection);
+                search_form.Owner = this;
+                search_form.Show();
+            }
+            else
+                search_form.WindowState = FormWindowState.Normal;
         }
 
         private void PrintCardBtn_Click(object sender, EventArgs e)
@@ -46,7 +52,7 @@ namespace LibraryForm
             printDialog.ShowDialog();
         }
 
-        ReaderForm reader_form;
+        ReaderForm? reader_form;
         private void EditReaderBtn_Click(object sender, EventArgs e)
         {
             reader_form = new ReaderForm(true, CurrentReader, sqlConnection);
@@ -57,7 +63,9 @@ namespace LibraryForm
         private void ChangeReaderBtn_Click(object sender, EventArgs e)
         {
             this.Close();
+#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
             login.ChangeTextCardNumber("");
+#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
             login.Show();
         }
 
@@ -67,25 +75,29 @@ namespace LibraryForm
             showReader();
         }
 
-        public void showDB_BOOKS()
+        public void showDB_BOOKS(DataTable datatable)
+        {
+            dataGridView1.DataSource = datatable;
+            dataGridView1.Columns[0].Width = 62;
+            dataGridView1.Columns[1].Width = 358;
+            dataGridView1.Columns[2].Width = 216;
+            dataGridView1.Columns[3].Width = 95;
+            dataGridView1.Columns[4].Width = 150;
+            dataGridView1.Columns[5].Visible = false;
+            dataGridView1.Columns[6].Width = 100;
+            dataGridView1.ClearSelection();
+        }
+
+        public DataTable fillDatatableBooks()
         {
             SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT id, [Название книги], [Автор книги], [Дата издания], " +
                 "[Издательство], [Обложка], [Наличие] FROM Книги", sqlConnection);
 
             DataSet dataset = new DataSet();
             dataAdapter.Fill(dataset);
-            dataGridView1.DataSource = dataset.Tables[0];
-            dataGridView1.Columns[0].Width = 50;
-            dataGridView1.Columns[1].Width = 358;
-            dataGridView1.Columns[2].Width = 216;
-            dataGridView1.Columns[3].Width = 104;
-            dataGridView1.Columns[4].Width = 150;
-            dataGridView1.Columns[5].Visible = false;
-            dataGridView1.Columns[6].Width = 103;
-            dataGridView1.ClearSelection();
-
-
+            return dataset.Tables[0];
         }
+          
 
         public void showReader()
         {
@@ -100,12 +112,10 @@ namespace LibraryForm
             catch (Exception)
             {
 
-            }
-            
+            }           
         }
 
-        BookForm bookform;
-        public Book SelectedBook;
+        BookForm? bookform;
         private void AddBookBtn_Click(object sender, EventArgs e)
         {
             bookform = new BookForm(false, sqlConnection);
@@ -155,7 +165,9 @@ namespace LibraryForm
 
         private void LibraryForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
             login.Show();
+#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
         }
     }
 }
