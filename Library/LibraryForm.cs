@@ -7,18 +7,27 @@ namespace LibraryForm
     public partial class LibraryForm : Form
     {
         private SqlConnection sqlConnection;
+        public Reader SelectedReader;
 
-        public LibraryForm()
+        public LibraryForm(Reader reader)
         {
             InitializeComponent();
-            string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;  
+#pragma warning disable CS8602 // –азыменование веро€тной пустой ссылки.
+            string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+#pragma warning restore CS8602 // –азыменование веро€тной пустой ссылки.
             sqlConnection = new SqlConnection($"Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFilename = {path}\\LibraryDB.mdf; Integrated Security = True");
             if (sqlConnection.State != ConnectionState.Open)
             {
                 sqlConnection.Open();
             }
+            SelectedReader = reader;
         }
 
+        private void LibraryForm_Load(object sender, EventArgs e)
+        {
+            showReader();
+            showDB_BOOKS();
+        }
 
         private void SearchBookBtn_Click(object sender, EventArgs e)
         {
@@ -40,7 +49,6 @@ namespace LibraryForm
         }
 
         ReaderForm reader_form;
-        public Reader SelectedReader;
 
         private void ChangeReaderBtn_Click(object sender, EventArgs e)
         {
@@ -65,6 +73,23 @@ namespace LibraryForm
             dataGridView1.Columns[5].Width = 87;
             dataGridView1.Columns[6].Width = 93;
             dataGridView1.ClearSelection();
+        }
+
+        public void showReader()
+        {
+            CardNumberLbl.Text = SelectedReader.Library_card_number;
+            SurnameLbl.Text = SelectedReader.Surname;
+            NameLbl.Text = SelectedReader.Name;
+            PatronymicLbl.Text = SelectedReader.Patronymic;
+            try
+            {
+                PhotoPictureBox.Load(SelectedReader.Photo);
+            }
+            catch (Exception)
+            {
+
+            }
+            
         }
 
         BookForm bookform;
@@ -110,9 +135,5 @@ namespace LibraryForm
 #pragma warning restore CS8601 // ¬озможно, назначение-ссылка, допускающее значение NULL.
         }
 
-        private void LibraryForm_Load(object sender, EventArgs e)
-        {
-            showDB_BOOKS();        
-        }
     }
 }

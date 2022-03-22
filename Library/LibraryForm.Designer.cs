@@ -30,11 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LibraryForm));
             this.ReadersBooksPanel = new System.Windows.Forms.Panel();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.TitleReadersBooksLbl = new System.Windows.Forms.Label();
             this.SearchBooksPanel = new System.Windows.Forms.Panel();
@@ -65,52 +60,12 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.ReadersBooksPanel.BackColor = System.Drawing.Color.FloralWhite;
             this.ReadersBooksPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ReadersBooksPanel.Controls.Add(this.textBox6);
-            this.ReadersBooksPanel.Controls.Add(this.textBox5);
-            this.ReadersBooksPanel.Controls.Add(this.textBox4);
-            this.ReadersBooksPanel.Controls.Add(this.textBox3);
-            this.ReadersBooksPanel.Controls.Add(this.textBox2);
             this.ReadersBooksPanel.Controls.Add(this.textBox1);
             this.ReadersBooksPanel.Controls.Add(this.TitleReadersBooksLbl);
             this.ReadersBooksPanel.Location = new System.Drawing.Point(12, 224);
             this.ReadersBooksPanel.Name = "ReadersBooksPanel";
             this.ReadersBooksPanel.Size = new System.Drawing.Size(335, 520);
             this.ReadersBooksPanel.TabIndex = 1;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(3, 196);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(326, 27);
-            this.textBox6.TabIndex = 6;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(3, 163);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(326, 27);
-            this.textBox5.TabIndex = 5;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(3, 130);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(326, 27);
-            this.textBox4.TabIndex = 4;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(3, 97);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(326, 27);
-            this.textBox3.TabIndex = 3;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(3, 64);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(326, 27);
-            this.textBox2.TabIndex = 2;
             // 
             // textBox1
             // 
@@ -349,11 +304,6 @@
         private Button SearchBookBtn;
         private DataGridView dataGridView1;
         private TextBox textBox1;
-        private TextBox textBox6;
-        private TextBox textBox5;
-        private TextBox textBox4;
-        private TextBox textBox3;
-        private TextBox textBox2;
         private Button EditBookBtn;
         private Button AddBookBtn;
     }
