@@ -7,8 +7,8 @@ using System.Data.SqlClient;
 
 namespace LibraryForm
 {
-    public partial class ReaderForm : Form
-    {
+	public partial class ReaderForm : Form
+	{
 		LibraryForm main;
 		FirstForm login;
 		private SqlConnection sqlConnection;
@@ -35,19 +35,19 @@ namespace LibraryForm
 		private void ReaderForm_Load(object sender, EventArgs e)
 		{
 			if(this.Owner is LibraryForm)
-            {
+			{
 				main = (LibraryForm)this.Owner;
-            }
-            else
-            {
+			}
+			else
+			{
 				login = (FirstForm)this.Owner;
-            }
+			}
 			fillData(CurrentReader);
 		}
 
 		private void UpdateReaderFromTxtBox()
-        {
-			//SelectedReader.id = Convert.ToInt32(dataset.Tables[0].Rows[0][0]);
+		{
+			//CurrentReader.id = Convert.ToInt32(dataset.Tables[0].Rows[0][0]);
 			CurrentReader.Surname = SurnameTxtBox.Text;
 			CurrentReader.Name = NameTxtBox.Text;
 			CurrentReader.Patronymic = PatronymicTxtBox.Text;
@@ -61,22 +61,19 @@ namespace LibraryForm
 		{
 			try
 			{
-				command.Parameters.AddWithValue("Фамилия", SurnameTxtBox.Text);
-				command.Parameters.AddWithValue("Имя", NameTxtBox.Text);
-				command.Parameters.AddWithValue("Отчество", PatronymicTxtBox.Text);
-				command.Parameters.AddWithValue("Номер_читательского_билета", CardNumberMskdTxtBox.Text);
-				command.Parameters.AddWithValue("Адрес", AddressTxtBox.Text);
-				command.Parameters.AddWithValue("Номер_телефона", PhoneNumberMskdTxtBox.Text);
-				if (PhotoPictureBox.Image != null)
-				{
-					Image img = PhotoPictureBox.Image;
+				command.Parameters.AddWithValue("Фамилия", CurrentReader.Surname);
+				command.Parameters.AddWithValue("Имя", CurrentReader.Name);
+				command.Parameters.AddWithValue("Отчество", CurrentReader.Patronymic);
+				command.Parameters.AddWithValue("Номер_читательского_билета", CurrentReader.Library_card_number);
+				command.Parameters.AddWithValue("Адрес", CurrentReader.Аddress);
+				command.Parameters.AddWithValue("Номер_телефона", CurrentReader.Phone_number);
+				if (CurrentReader.Photo != null)
+				{			
 					byte[] arr_picture;
 					ImageConverter converter = new ImageConverter();
-					arr_picture = (byte[])converter.ConvertTo(img, typeof(byte[]));
-
+					arr_picture = (byte[])converter.ConvertTo(CurrentReader.Photo, typeof(byte[]));
 					command.Parameters.AddWithValue("Фото", arr_picture);
 				}		
-
 				if (command.ExecuteNonQuery() == 1)
 				{
 					MessageBox.Show(message);
@@ -123,26 +120,27 @@ namespace LibraryForm
 			else
 			{
 				SqlCommand sqlCommand;
+				UpdateReaderFromTxtBox(); // Обновление Reader из TextBox
 				switch (ModeEdit)
 				{
 					case false:
 						sqlCommand = new SqlCommand($"Insert INTO [Читатели] ([Фамилия], [Имя], [Отчество], " +
 							"[Номер читательского билета], [Адрес], [Номер телефона], [Фото]) " +
-							"VALUES (@Фамилия, @Имя, @Отчество, @Номер_читательского_билета, @Адрес, @Номер_телефона, @Фото)"
-										, sqlConnection);
+							"VALUES (@Фамилия, @Имя, @Отчество, @Номер_читательского_билета, @Адрес, @Номер_телефона, " +
+                            "@Фото)", sqlConnection);
 						sqladd(sqlCommand, "Читатель добавлен в БД");
 						login.ChangeTextCardNumber(CurrentReader.Library_card_number);
 						break;
 					case true:
-						sqlCommand = new SqlCommand($"Update [Читатели] set [Фамилия] = @Фамилия, [Имя] = @Имя, [Отчество] = @Отчество, [Номер читательского билета] = @Номер_читательского_билета, [Адрес] = @Адрес, [Номер телефона] = @Номер_телефона, [Фото] = @Фото " +
-								$"Where Id={CurrentReader.id}", sqlConnection);
+						sqlCommand = new SqlCommand($"Update [Читатели] set [Фамилия] = @Фамилия, [Имя] = @Имя, " +
+                            "[Отчество] = @Отчество, [Номер читательского билета] = @Номер_читательского_билета, " +
+                            "[Адрес] = @Адрес, [Номер телефона] = @Номер_телефона, [Фото] = @Фото " +
+							$"Where Id={CurrentReader.id}", sqlConnection);
 						sqladd(sqlCommand, "Читатель изменен в БД");
-						UpdateReaderFromTxtBox();
 						main.UpdateReader(CurrentReader);
 						break;
 				}
-				//main.showDB_BOOKS();
-				//main.SelectedBook.clear();
+
 				this.Close();
 			}
 		}
@@ -162,21 +160,21 @@ namespace LibraryForm
 			{
 				MessageBox.Show(ex.Message);
 			}
-			//main.showDB_BOOKS();
-			//main.SelectedBook.clear();
+
 			this.Close();
+			main.Close();
 		}
 
-        private void CardNumberMskdTxtBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
+		private void CardNumberMskdTxtBox_KeyPress(object sender, KeyPressEventArgs e)
+		{
 			if (!Char.IsDigit(e.KeyChar) && e.KeyChar != 8)
 			{
 				e.Handled = true;
 			}
 		}
 
-        private void LoadImageBtn_Click(object sender, EventArgs e)
-        {
+		private void LoadImageBtn_Click(object sender, EventArgs e)
+		{
 			openFileDialog1.Filter = "Images (*.BMP;*.JPG;*.GIF,*.PNG,*.TIFF)|*.BMP;*.JPG;*.GIF;*.PNG;*.TIFF|" +
 				"All files (*.*)|*.*";
 			openFileDialog1.Title = "Выберите фотографию";
@@ -185,5 +183,5 @@ namespace LibraryForm
 				PhotoPictureBox.Image = Image.FromFile(openFileDialog1.FileName);
 			}
 		}
-    }
+	}
 }
