@@ -76,13 +76,15 @@ namespace LibraryForm
             dataAdapter.Fill(dataset);
             dataGridView1.DataSource = dataset.Tables[0];
             dataGridView1.Columns[0].Width = 50;
-            dataGridView1.Columns[1].Width = 290;
-            dataGridView1.Columns[2].Width = 188;
-            dataGridView1.Columns[3].Width = 75;
+            dataGridView1.Columns[1].Width = 358;
+            dataGridView1.Columns[2].Width = 216;
+            dataGridView1.Columns[3].Width = 104;
             dataGridView1.Columns[4].Width = 150;
-            dataGridView1.Columns[5].Width = 87;
-            dataGridView1.Columns[6].Width = 93;
+            dataGridView1.Columns[5].Visible = false;
+            dataGridView1.Columns[6].Width = 103;
             dataGridView1.ClearSelection();
+
+
         }
 
         public void showReader()
@@ -137,6 +139,12 @@ namespace LibraryForm
                 SelectedBook.Publisher = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
                 SelectedBook.PhotoPictureBox = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();
                 SelectedBook.NumberOfBooks = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
+
+                title_lbl.Text = SelectedBook.Title;
+                author_lbl.Text = SelectedBook.Author;
+                publisher_lbl.Text = SelectedBook.Publisher + " " + SelectedBook.PublicDate;
+                qty_lbl.Text = "В наличии: " + SelectedBook.NumberOfBooks;
+                BooksPictureBox.Load(SelectedBook.PhotoPictureBox);
             }
             catch (Exception ex)
             {
