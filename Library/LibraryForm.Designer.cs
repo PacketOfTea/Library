@@ -106,7 +106,7 @@
             this.accept_Book_btn.BackColor = System.Drawing.Color.Moccasin;
             this.accept_Book_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.accept_Book_btn.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.accept_Book_btn.Location = new System.Drawing.Point(175, 92);
+            this.accept_Book_btn.Location = new System.Drawing.Point(175, 89);
             this.accept_Book_btn.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.accept_Book_btn.Name = "accept_Book_btn";
             this.accept_Book_btn.Size = new System.Drawing.Size(143, 30);

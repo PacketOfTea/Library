@@ -28,7 +28,7 @@ namespace LibraryForm
         private void LibraryForm_Load(object sender, EventArgs e)
         {
             showReader();
-            showDB_BOOKS();
+            showDB_BOOKS(fillDatatableBooks());
 #pragma warning disable CS8601 // Возможно, назначение-ссылка, допускающее значение NULL.
             login = this.Owner as FirstForm;
 #pragma warning restore CS8601 // Возможно, назначение-ссылка, допускающее значение NULL.
@@ -36,7 +36,7 @@ namespace LibraryForm
 
         private void SearchBookBtn_Click(object sender, EventArgs e)
         {
-            SearchForm search_form = new SearchForm();
+            SearchForm search_form = new SearchForm(sqlConnection);
             search_form.Owner = this;
             search_form.Show();
         }
@@ -70,14 +70,9 @@ namespace LibraryForm
             showReader();
         }
 
-        public void showDB_BOOKS()
+        public void showDB_BOOKS(DataTable datatable)
         {
-            SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT id, [Название книги], [Автор книги], [Дата издания], " +
-                "[Издательство], [Обложка], [Наличие] FROM Книги", sqlConnection);
-
-            DataSet dataset = new DataSet();
-            dataAdapter.Fill(dataset);
-            dataGridView1.DataSource = dataset.Tables[0];
+            dataGridView1.DataSource = datatable;
             dataGridView1.Columns[0].Width = 50;
             dataGridView1.Columns[1].Width = 358;
             dataGridView1.Columns[2].Width = 216;
@@ -87,6 +82,17 @@ namespace LibraryForm
             dataGridView1.Columns[6].Width = 103;
             dataGridView1.ClearSelection();
         }
+
+        public DataTable fillDatatableBooks()
+        {
+            SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT id, [Название книги], [Автор книги], [Дата издания], " +
+                "[Издательство], [Обложка], [Наличие] FROM Книги", sqlConnection);
+
+            DataSet dataset = new DataSet();
+            dataAdapter.Fill(dataset);
+            return dataset.Tables[0];
+        }
+          
 
         public void showReader()
         {

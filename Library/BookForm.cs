@@ -106,7 +106,7 @@ namespace LibraryForm
 						sqladd(sqlCommand, "Книга изменена в БД");
 						break;
 				}
-				main.showDB_BOOKS();
+				main.showDB_BOOKS(main.fillDatatableBooks());
 #pragma warning disable CS1690 // Доступ к члену в поле класса маршалинга по ссылке может вызвать исключение времени выполнения
                 main.SelectedBook.clear();
 #pragma warning restore CS1690 // Доступ к члену в поле класса маршалинга по ссылке может вызвать исключение времени выполнения
@@ -129,7 +129,7 @@ namespace LibraryForm
 			{
 				MessageBox.Show(ex.Message);
 			}
-			main.showDB_BOOKS();
+			main.showDB_BOOKS(main.fillDatatableBooks());
 #pragma warning disable CS1690 // Доступ к члену в поле класса маршалинга по ссылке может вызвать исключение времени выполнения
             main.SelectedBook.clear();
 #pragma warning restore CS1690 // Доступ к члену в поле класса маршалинга по ссылке может вызвать исключение времени выполнения

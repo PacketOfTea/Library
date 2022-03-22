@@ -90,6 +90,7 @@
             this.SearchBtn.TabIndex = 22;
             this.SearchBtn.Text = "Поиск";
             this.SearchBtn.UseVisualStyleBackColor = false;
+            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
             // AuthorСmbBox
             // 
@@ -150,6 +151,7 @@
             this.Name = "SearchForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Поиск";
+            this.Load += new System.EventHandler(this.SearchForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
