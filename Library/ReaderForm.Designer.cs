@@ -96,9 +96,9 @@
             this.CardNumberLbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CardNumberLbl.Location = new System.Drawing.Point(188, 134);
             this.CardNumberLbl.Name = "CardNumberLbl";
-            this.CardNumberLbl.Size = new System.Drawing.Size(133, 28);
+            this.CardNumberLbl.Size = new System.Drawing.Size(142, 28);
             this.CardNumberLbl.TabIndex = 7;
-            this.CardNumberLbl.Text = "Номер карты";
+            this.CardNumberLbl.Text = "Номер билета";
             // 
             // AddressLbl
             // 

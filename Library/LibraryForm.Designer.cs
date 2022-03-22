@@ -33,6 +33,14 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.TitleReadersBooksLbl = new System.Windows.Forms.Label();
             this.SearchBooksPanel = new System.Windows.Forms.Panel();
+            this.panel = new System.Windows.Forms.Panel();
+            this.pickUp_btn = new System.Windows.Forms.Button();
+            this.giveBook_btn = new System.Windows.Forms.Button();
+            this.qty_lbl = new System.Windows.Forms.Label();
+            this.publisher_lbl = new System.Windows.Forms.Label();
+            this.author_lbl = new System.Windows.Forms.Label();
+            this.title_lbl = new System.Windows.Forms.Label();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.EditBookBtn = new System.Windows.Forms.Button();
             this.AddBookBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -49,6 +57,8 @@
             this.PhotoPictureBox = new System.Windows.Forms.PictureBox();
             this.ReadersBooksPanel.SuspendLayout();
             this.SearchBooksPanel.SuspendLayout();
+            this.panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.LibraryCardPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PhotoPictureBox)).BeginInit();
@@ -89,6 +99,7 @@
             this.SearchBooksPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.SearchBooksPanel.BackColor = System.Drawing.Color.FloralWhite;
             this.SearchBooksPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.SearchBooksPanel.Controls.Add(this.panel);
             this.SearchBooksPanel.Controls.Add(this.EditBookBtn);
             this.SearchBooksPanel.Controls.Add(this.AddBookBtn);
             this.SearchBooksPanel.Controls.Add(this.dataGridView1);
@@ -97,6 +108,96 @@
             this.SearchBooksPanel.Name = "SearchBooksPanel";
             this.SearchBooksPanel.Size = new System.Drawing.Size(1007, 732);
             this.SearchBooksPanel.TabIndex = 2;
+            // 
+            // panel
+            // 
+            this.panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel.Controls.Add(this.pickUp_btn);
+            this.panel.Controls.Add(this.giveBook_btn);
+            this.panel.Controls.Add(this.qty_lbl);
+            this.panel.Controls.Add(this.publisher_lbl);
+            this.panel.Controls.Add(this.author_lbl);
+            this.panel.Controls.Add(this.title_lbl);
+            this.panel.Controls.Add(this.pictureBox);
+            this.panel.Location = new System.Drawing.Point(3, 455);
+            this.panel.Name = "panel";
+            this.panel.Size = new System.Drawing.Size(999, 159);
+            this.panel.TabIndex = 6;
+            // 
+            // pickUp_btn
+            // 
+            this.pickUp_btn.BackColor = System.Drawing.Color.Moccasin;
+            this.pickUp_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.pickUp_btn.Location = new System.Drawing.Point(861, 107);
+            this.pickUp_btn.Name = "pickUp_btn";
+            this.pickUp_btn.Size = new System.Drawing.Size(122, 33);
+            this.pickUp_btn.TabIndex = 8;
+            this.pickUp_btn.Text = "Принять книгу";
+            this.pickUp_btn.UseVisualStyleBackColor = false;
+            // 
+            // giveBook_btn
+            // 
+            this.giveBook_btn.BackColor = System.Drawing.Color.Moccasin;
+            this.giveBook_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.giveBook_btn.Location = new System.Drawing.Point(722, 107);
+            this.giveBook_btn.Name = "giveBook_btn";
+            this.giveBook_btn.Size = new System.Drawing.Size(122, 33);
+            this.giveBook_btn.TabIndex = 7;
+            this.giveBook_btn.Text = "Выдать книгу";
+            this.giveBook_btn.UseVisualStyleBackColor = false;
+            // 
+            // qty_lbl
+            // 
+            this.qty_lbl.AutoSize = true;
+            this.qty_lbl.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.qty_lbl.Location = new System.Drawing.Point(863, 12);
+            this.qty_lbl.Name = "qty_lbl";
+            this.qty_lbl.Size = new System.Drawing.Size(119, 23);
+            this.qty_lbl.TabIndex = 4;
+            this.qty_lbl.Text = "В наличии: 10";
+            // 
+            // publisher_lbl
+            // 
+            this.publisher_lbl.AutoSize = true;
+            this.publisher_lbl.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.publisher_lbl.ForeColor = System.Drawing.Color.DimGray;
+            this.publisher_lbl.Location = new System.Drawing.Point(120, 82);
+            this.publisher_lbl.Name = "publisher_lbl";
+            this.publisher_lbl.Size = new System.Drawing.Size(109, 23);
+            this.publisher_lbl.TabIndex = 3;
+            this.publisher_lbl.Text = "ЭКСМО 2013";
+            // 
+            // author_lbl
+            // 
+            this.author_lbl.AutoSize = true;
+            this.author_lbl.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.author_lbl.ForeColor = System.Drawing.Color.DimGray;
+            this.author_lbl.Location = new System.Drawing.Point(119, 51);
+            this.author_lbl.Name = "author_lbl";
+            this.author_lbl.Size = new System.Drawing.Size(151, 23);
+            this.author_lbl.TabIndex = 2;
+            this.author_lbl.Text = "Михаил Булгаков";
+            // 
+            // title_lbl
+            // 
+            this.title_lbl.AutoSize = true;
+            this.title_lbl.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.title_lbl.Location = new System.Drawing.Point(116, 12);
+            this.title_lbl.Name = "title_lbl";
+            this.title_lbl.Size = new System.Drawing.Size(239, 31);
+            this.title_lbl.TabIndex = 1;
+            this.title_lbl.Text = "Мастер и Маргарита";
+            // 
+            // pictureBox
+            // 
+            this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox.Image = global::Library.Properties.Resources.Mihail_Bulgakov__Master_i_Margarita;
+            this.pictureBox.Location = new System.Drawing.Point(13, 12);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(95, 128);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox.TabIndex = 0;
+            this.pictureBox.TabStop = false;
             // 
             // EditBookBtn
             // 
@@ -130,7 +231,7 @@
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 29;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1007, 679);
+            this.dataGridView1.Size = new System.Drawing.Size(1007, 373);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -281,6 +382,9 @@
             this.ReadersBooksPanel.ResumeLayout(false);
             this.ReadersBooksPanel.PerformLayout();
             this.SearchBooksPanel.ResumeLayout(false);
+            this.panel.ResumeLayout(false);
+            this.panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.LibraryCardPanel.ResumeLayout(false);
             this.LibraryCardPanel.PerformLayout();
@@ -308,5 +412,13 @@
         private TextBox textBox1;
         private Button EditBookBtn;
         private Button AddBookBtn;
+        private Panel panel;
+        private PictureBox pictureBox;
+        private Label title_lbl;
+        private Label author_lbl;
+        private Label publisher_lbl;
+        private Button pickUp_btn;
+        private Button giveBook_btn;
+        private Label qty_lbl;
     }
 }
