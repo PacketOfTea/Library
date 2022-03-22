@@ -15,6 +15,7 @@ namespace LibraryForm
 			sqlConnection = connect;
 			ModeEdit = mode;        
 			DeleteBtn.Visible = false;
+			SaveBtn.Location = new Point(421, 239);
 		}
 
 		public BookForm(bool mode, Book book, SqlConnection connect)

@@ -63,6 +63,16 @@ namespace Library.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Mihail_Bulgakov__Master_i_Margarita {
+            get {
+                object obj = ResourceManager.GetObject("Mihail_Bulgakov__Master_i_Margarita", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap NoPhoto {
             get {
                 object obj = ResourceManager.GetObject("NoPhoto", resourceCulture);
