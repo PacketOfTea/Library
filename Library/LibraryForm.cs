@@ -33,12 +33,17 @@ namespace LibraryForm
             login = this.Owner as FirstForm;
 #pragma warning restore CS8601 // Возможно, назначение-ссылка, допускающее значение NULL.
         }
-
+        SearchForm search_form; 
         private void SearchBookBtn_Click(object sender, EventArgs e)
         {
-            SearchForm search_form = new SearchForm(sqlConnection);
-            search_form.Owner = this;
-            search_form.Show();
+            if (search_form == null || search_form.IsDisposed)
+            {
+                search_form = new SearchForm(sqlConnection);
+                search_form.Owner = this;
+                search_form.Show();
+            }
+            else
+                search_form.WindowState = FormWindowState.Normal;
         }
 
         private void PrintCardBtn_Click(object sender, EventArgs e)
@@ -73,13 +78,13 @@ namespace LibraryForm
         public void showDB_BOOKS(DataTable datatable)
         {
             dataGridView1.DataSource = datatable;
-            dataGridView1.Columns[0].Width = 50;
+            dataGridView1.Columns[0].Width = 62;
             dataGridView1.Columns[1].Width = 358;
             dataGridView1.Columns[2].Width = 216;
-            dataGridView1.Columns[3].Width = 104;
+            dataGridView1.Columns[3].Width = 95;
             dataGridView1.Columns[4].Width = 150;
             dataGridView1.Columns[5].Visible = false;
-            dataGridView1.Columns[6].Width = 103;
+            dataGridView1.Columns[6].Width = 100;
             dataGridView1.ClearSelection();
         }
 
