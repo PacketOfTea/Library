@@ -82,5 +82,19 @@ namespace LibraryForm
 			reader_form.Owner = this;
 			reader_form.ShowDialog();
 		}
-	}
+		public void ChangeTextCardNumber(string text)
+        {
+			ReaderCardTxtBox.Text = text;
+			if (text != "")
+				LoginBtn_Click(this, null);
+
+		}
+
+
+        private void ReaderCardTxtBox_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+			if (e.KeyCode == Keys.Enter)
+				LoginBtn_Click(sender, e);
+		}
+    }
 }

@@ -10,6 +10,7 @@ namespace LibraryForm
     public partial class ReaderForm : Form
     {
 		LibraryForm main;
+		FirstForm login;
 		private SqlConnection sqlConnection;
 		bool ModeEdit = false;
 		Reader CurrentReader;
@@ -33,7 +34,14 @@ namespace LibraryForm
 
 		private void ReaderForm_Load(object sender, EventArgs e)
 		{
-			main = this.Owner as LibraryForm;
+			if(this.Owner is LibraryForm)
+            {
+				main = (LibraryForm)this.Owner;
+            }
+            else
+            {
+				login = (FirstForm)this.Owner;
+            }
 			fillData(CurrentReader);
 		}
 
@@ -123,6 +131,7 @@ namespace LibraryForm
 							"VALUES (@Фамилия, @Имя, @Отчество, @Номер_читательского_билета, @Адрес, @Номер_телефона, @Фото)"
 										, sqlConnection);
 						sqladd(sqlCommand, "Читатель добавлен в БД");
+						login.ChangeTextCardNumber(CurrentReader.Library_card_number);
 						break;
 					case true:
 						sqlCommand = new SqlCommand($"Update [Читатели] set [Фамилия] = @Фамилия, [Имя] = @Имя, [Отчество] = @Отчество, [Номер читательского билета] = @Номер_читательского_билета, [Адрес] = @Адрес, [Номер телефона] = @Номер_телефона, [Фото] = @Фото " +
