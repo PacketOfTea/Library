@@ -41,6 +41,8 @@
             // 
             // ReaderCardTxtBox
             // 
+            this.ReaderCardTxtBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ReaderCardTxtBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ReaderCardTxtBox.Location = new System.Drawing.Point(55, 161);
             this.ReaderCardTxtBox.MaxLength = 12;
@@ -52,7 +54,9 @@
             // 
             // NameLbl
             // 
-            this.NameLbl.AutoSize = true;
+            this.NameLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.NameLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.NameLbl.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.NameLbl.Location = new System.Drawing.Point(95, 60);
@@ -63,33 +67,40 @@
             // 
             // ReaderCardLbl
             // 
+            this.ReaderCardLbl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ReaderCardLbl.AutoSize = true;
-            this.ReaderCardLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ReaderCardLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ReaderCardLbl.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ReaderCardLbl.Location = new System.Drawing.Point(55, 135);
+            this.ReaderCardLbl.Location = new System.Drawing.Point(51, 129);
             this.ReaderCardLbl.Name = "ReaderCardLbl";
-            this.ReaderCardLbl.Size = new System.Drawing.Size(210, 23);
+            this.ReaderCardLbl.Size = new System.Drawing.Size(249, 28);
             this.ReaderCardLbl.TabIndex = 2;
             this.ReaderCardLbl.Text = "№ читательского билета";
             // 
             // InfoLbl
             // 
+            this.InfoLbl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.InfoLbl.AutoSize = true;
+            this.InfoLbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.InfoLbl.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.InfoLbl.Location = new System.Drawing.Point(64, 287);
+            this.InfoLbl.Location = new System.Drawing.Point(23, 298);
             this.InfoLbl.Name = "InfoLbl";
-            this.InfoLbl.Size = new System.Drawing.Size(309, 20);
+            this.InfoLbl.Size = new System.Drawing.Size(408, 28);
             this.InfoLbl.TabIndex = 3;
             this.InfoLbl.Text = "----------Нет читательского билета----------";
             // 
             // LoginBtn
             // 
+            this.LoginBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.LoginBtn.BackColor = System.Drawing.Color.Orange;
             this.LoginBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LoginBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.LoginBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.LoginBtn.Location = new System.Drawing.Point(95, 226);
             this.LoginBtn.Name = "LoginBtn";
-            this.LoginBtn.Size = new System.Drawing.Size(250, 37);
+            this.LoginBtn.Size = new System.Drawing.Size(250, 58);
             this.LoginBtn.TabIndex = 4;
             this.LoginBtn.Text = "Войти в приложение";
             this.LoginBtn.UseVisualStyleBackColor = false;
@@ -97,13 +108,16 @@
             // 
             // CreateCardBtn
             // 
+            this.CreateCardBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CreateCardBtn.BackColor = System.Drawing.Color.Silver;
             this.CreateCardBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CreateCardBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CreateCardBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.CreateCardBtn.ForeColor = System.Drawing.Color.DimGray;
-            this.CreateCardBtn.Location = new System.Drawing.Point(95, 337);
+            this.CreateCardBtn.Location = new System.Drawing.Point(70, 344);
             this.CreateCardBtn.Name = "CreateCardBtn";
-            this.CreateCardBtn.Size = new System.Drawing.Size(250, 37);
+            this.CreateCardBtn.Size = new System.Drawing.Size(309, 55);
             this.CreateCardBtn.TabIndex = 5;
             this.CreateCardBtn.Text = "Завести читательский билет";
             this.CreateCardBtn.UseVisualStyleBackColor = false;

@@ -1,3 +1,4 @@
+using Library;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -10,6 +11,7 @@ namespace LibraryForm
         private FirstForm? login;
         private Reader CurrentReader;
         public Book SelectedBook;
+        Bitmap b;
 
         public LibraryForm(Reader reader)
         {
@@ -48,8 +50,20 @@ namespace LibraryForm
 
         private void PrintCardBtn_Click(object sender, EventArgs e)
         {
-            PrintDialog printDialog = new PrintDialog();
-            printDialog.ShowDialog();
+            ChangeReaderBtn.Visible = false;
+            EditReaderBtn.Visible = false;
+            PrintCardBtn.Visible = false;
+            b = new Bitmap(LibraryCardPanel.ClientRectangle.Width, LibraryCardPanel.ClientRectangle.Height);
+            LibraryCardPanel.DrawToBitmap(b, LibraryCardPanel.ClientRectangle);
+            ChangeReaderBtn.Visible = true;
+            EditReaderBtn.Visible = true;
+            PrintCardBtn.Visible = true;
+            printDialog1.Document = printDocument1;
+            if (printDialog1.ShowDialog() == DialogResult.OK)
+                printDocument1.Print();
+            
+
+            
         }
 
         ReaderForm? reader_form;
@@ -168,6 +182,27 @@ namespace LibraryForm
 #pragma warning disable CS8602 // –азыменование веро€тной пустой ссылки.
             login.Show();
 #pragma warning restore CS8602 // –азыменование веро€тной пустой ссылки.
+        }
+
+        private void panel_MouseMove(object sender, MouseEventArgs e)
+        {
+            //panel1.BackColor = Color.White;
+        }
+
+        private void panel_MouseLeave(object sender, EventArgs e)
+        {
+            //panel1.BackColor = Color.FloralWhite;
+        }
+
+        private void giveBook_btn_Click(object sender, EventArgs e)
+        {
+            BookPanel panel = new BookPanel(ReadersBooksPanel,ReadersBooksPanel.Controls.Count - 1);
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawImageUnscaled(b, 0, 0);
+            e.Graphics.PageUnit = GraphicsUnit.Inch;
         }
     }
 }
