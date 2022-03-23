@@ -25,6 +25,8 @@ namespace LibraryForm
                 sqlConnection.Open();
             }
             CurrentReader = reader;
+            //HeadPanel.BackColor = ColorTranslator.FromHtml("#6b7fc8");
+            //LibraryCardPanel.BackColor = ColorTranslator.FromHtml("#cbcfda");
         }
 
         private void LibraryForm_Load(object sender, EventArgs e)
@@ -61,9 +63,6 @@ namespace LibraryForm
             printDialog1.Document = printDocument1;
             if (printDialog1.ShowDialog() == DialogResult.OK)
                 printDocument1.Print();
-            
-
-            
         }
 
         ReaderForm? reader_form;

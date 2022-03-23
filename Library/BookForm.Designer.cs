@@ -196,7 +196,9 @@
             this.Controls.Add(this.NameLbl);
             this.Controls.Add(this.AuthorLbl);
             this.Controls.Add(this.PhotoPictureBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "BookForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавление книги";

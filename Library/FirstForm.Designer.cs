@@ -41,8 +41,6 @@
             // 
             // ReaderCardTxtBox
             // 
-            this.ReaderCardTxtBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.ReaderCardTxtBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ReaderCardTxtBox.Location = new System.Drawing.Point(55, 161);
             this.ReaderCardTxtBox.MaxLength = 12;
@@ -54,9 +52,6 @@
             // 
             // NameLbl
             // 
-            this.NameLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.NameLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.NameLbl.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.NameLbl.Location = new System.Drawing.Point(95, 60);
@@ -67,8 +62,6 @@
             // 
             // ReaderCardLbl
             // 
-            this.ReaderCardLbl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.ReaderCardLbl.AutoSize = true;
             this.ReaderCardLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ReaderCardLbl.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -80,8 +73,6 @@
             // 
             // InfoLbl
             // 
-            this.InfoLbl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.InfoLbl.AutoSize = true;
             this.InfoLbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.InfoLbl.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -93,8 +84,6 @@
             // 
             // LoginBtn
             // 
-            this.LoginBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.LoginBtn.BackColor = System.Drawing.Color.Orange;
             this.LoginBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LoginBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -108,9 +97,6 @@
             // 
             // CreateCardBtn
             // 
-            this.CreateCardBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.CreateCardBtn.BackColor = System.Drawing.Color.Silver;
             this.CreateCardBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CreateCardBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -125,9 +111,7 @@
             // 
             // MainPanel
             // 
-            this.MainPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MainPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.MainPanel.Controls.Add(this.NameLbl);
             this.MainPanel.Controls.Add(this.CreateCardBtn);
             this.MainPanel.Controls.Add(this.ReaderCardTxtBox);
