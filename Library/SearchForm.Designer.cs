@@ -129,8 +129,10 @@
             this.Controls.Add(this.PublicDateLbl);
             this.Controls.Add(this.NameLbl);
             this.Controls.Add(this.AuthorLbl);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(587, 163);
+            this.MaximizeBox = false;
             this.Name = "SearchForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Поиск";

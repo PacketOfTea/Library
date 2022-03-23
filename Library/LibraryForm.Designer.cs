@@ -30,6 +30,9 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LibraryForm));
             this.ReadersBooksPanel = new System.Windows.Forms.Panel();
             this.TitleReadersBooksLbl = new System.Windows.Forms.Label();
@@ -46,6 +49,8 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.SearchBookBtn = new System.Windows.Forms.Button();
             this.LibraryCardPanel = new System.Windows.Forms.Panel();
+            this.HeadPanel = new System.Windows.Forms.Panel();
+            this.ReadersCardLbl = new System.Windows.Forms.Label();
             this.PrintCardBtn = new System.Windows.Forms.Button();
             this.EditReaderBtn = new System.Windows.Forms.Button();
             this.ChangeReaderBtn = new System.Windows.Forms.Button();
@@ -53,7 +58,6 @@
             this.NameLbl = new System.Windows.Forms.Label();
             this.SurnameLbl = new System.Windows.Forms.Label();
             this.CardNumberLbl = new System.Windows.Forms.Label();
-            this.ReadersCardLbl = new System.Windows.Forms.Label();
             this.PhotoPictureBox = new System.Windows.Forms.PictureBox();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
@@ -63,6 +67,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.BooksPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.LibraryCardPanel.SuspendLayout();
+            this.HeadPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PhotoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,7 +76,7 @@
             this.ReadersBooksPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.ReadersBooksPanel.AutoScroll = true;
-            this.ReadersBooksPanel.BackColor = System.Drawing.Color.FloralWhite;
+            this.ReadersBooksPanel.BackColor = System.Drawing.Color.White;
             this.ReadersBooksPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ReadersBooksPanel.Controls.Add(this.TitleReadersBooksLbl);
             this.ReadersBooksPanel.Location = new System.Drawing.Point(12, 225);
@@ -96,7 +101,7 @@
             this.SearchBooksPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SearchBooksPanel.BackColor = System.Drawing.Color.FloralWhite;
+            this.SearchBooksPanel.BackColor = System.Drawing.Color.White;
             this.SearchBooksPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SearchBooksPanel.Controls.Add(this.panel);
             this.SearchBooksPanel.Controls.Add(this.EditBookBtn);
@@ -111,8 +116,7 @@
             // 
             // panel
             // 
-            this.panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel.BackColor = System.Drawing.Color.FloralWhite;
             this.panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel.Controls.Add(this.giveBook_btn);
             this.panel.Controls.Add(this.qty_lbl);
@@ -120,15 +124,17 @@
             this.panel.Controls.Add(this.author_lbl);
             this.panel.Controls.Add(this.title_lbl);
             this.panel.Controls.Add(this.BooksPictureBox);
-            this.panel.Location = new System.Drawing.Point(3, 566);
+            this.panel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel.Location = new System.Drawing.Point(0, 569);
             this.panel.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(998, 160);
+            this.panel.Size = new System.Drawing.Size(1004, 160);
             this.panel.TabIndex = 6;
             // 
             // giveBook_btn
             // 
-            this.giveBook_btn.BackColor = System.Drawing.Color.Moccasin;
+            this.giveBook_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.giveBook_btn.BackColor = System.Drawing.Color.LightSalmon;
             this.giveBook_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.giveBook_btn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.giveBook_btn.Location = new System.Drawing.Point(822, 107);
@@ -142,6 +148,7 @@
             // 
             // qty_lbl
             // 
+            this.qty_lbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.qty_lbl.AutoSize = true;
             this.qty_lbl.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.qty_lbl.Location = new System.Drawing.Point(849, 11);
@@ -159,9 +166,9 @@
             this.publisher_lbl.Location = new System.Drawing.Point(118, 80);
             this.publisher_lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.publisher_lbl.Name = "publisher_lbl";
-            this.publisher_lbl.Size = new System.Drawing.Size(127, 28);
+            this.publisher_lbl.Size = new System.Drawing.Size(301, 28);
             this.publisher_lbl.TabIndex = 3;
-            this.publisher_lbl.Text = "ЭКСМО 2013";
+            this.publisher_lbl.Text = "Издательство/год публикации";
             // 
             // author_lbl
             // 
@@ -171,9 +178,9 @@
             this.author_lbl.Location = new System.Drawing.Point(117, 46);
             this.author_lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.author_lbl.Name = "author_lbl";
-            this.author_lbl.Size = new System.Drawing.Size(174, 28);
+            this.author_lbl.Size = new System.Drawing.Size(69, 28);
             this.author_lbl.TabIndex = 2;
-            this.author_lbl.Text = "Михаил Булгаков";
+            this.author_lbl.Text = "Автор";
             // 
             // title_lbl
             // 
@@ -182,9 +189,9 @@
             this.title_lbl.Location = new System.Drawing.Point(116, 11);
             this.title_lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.title_lbl.Name = "title_lbl";
-            this.title_lbl.Size = new System.Drawing.Size(239, 31);
+            this.title_lbl.Size = new System.Drawing.Size(285, 31);
             this.title_lbl.TabIndex = 1;
-            this.title_lbl.Text = "Мастер и Маргарита";
+            this.title_lbl.Text = "Название произведения";
             // 
             // BooksPictureBox
             // 
@@ -199,13 +206,14 @@
             // 
             // EditBookBtn
             // 
+            this.EditBookBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.EditBookBtn.BackColor = System.Drawing.Color.Moccasin;
             this.EditBookBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EditBookBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.EditBookBtn.Location = new System.Drawing.Point(731, 3);
+            this.EditBookBtn.Location = new System.Drawing.Point(743, 3);
             this.EditBookBtn.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.EditBookBtn.Name = "EditBookBtn";
-            this.EditBookBtn.Size = new System.Drawing.Size(270, 44);
+            this.EditBookBtn.Size = new System.Drawing.Size(257, 44);
             this.EditBookBtn.TabIndex = 5;
             this.EditBookBtn.Text = "Редактировать книгу";
             this.EditBookBtn.UseVisualStyleBackColor = false;
@@ -213,13 +221,14 @@
             // 
             // AddBookBtn
             // 
+            this.AddBookBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AddBookBtn.BackColor = System.Drawing.Color.Moccasin;
             this.AddBookBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddBookBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.AddBookBtn.Location = new System.Drawing.Point(502, 3);
             this.AddBookBtn.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.AddBookBtn.Name = "AddBookBtn";
-            this.AddBookBtn.Size = new System.Drawing.Size(224, 44);
+            this.AddBookBtn.Size = new System.Drawing.Size(233, 44);
             this.AddBookBtn.TabIndex = 4;
             this.AddBookBtn.Text = "Добавить книгу";
             this.AddBookBtn.UseVisualStyleBackColor = false;
@@ -227,25 +236,50 @@
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SandyBrown;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(-1, 50);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FloralWhite;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidth = 51;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowTemplate.Height = 35;
+            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1006, 513);
+            this.dataGridView1.Size = new System.Drawing.Size(1006, 519);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -257,7 +291,7 @@
             this.SearchBookBtn.Location = new System.Drawing.Point(4, 3);
             this.SearchBookBtn.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.SearchBookBtn.Name = "SearchBookBtn";
-            this.SearchBookBtn.Size = new System.Drawing.Size(172, 44);
+            this.SearchBookBtn.Size = new System.Drawing.Size(167, 44);
             this.SearchBookBtn.TabIndex = 0;
             this.SearchBookBtn.Text = "Поиск книги";
             this.SearchBookBtn.UseVisualStyleBackColor = false;
@@ -265,8 +299,9 @@
             // 
             // LibraryCardPanel
             // 
-            this.LibraryCardPanel.BackColor = System.Drawing.Color.White;
+            this.LibraryCardPanel.BackColor = System.Drawing.Color.FloralWhite;
             this.LibraryCardPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LibraryCardPanel.Controls.Add(this.HeadPanel);
             this.LibraryCardPanel.Controls.Add(this.PrintCardBtn);
             this.LibraryCardPanel.Controls.Add(this.EditReaderBtn);
             this.LibraryCardPanel.Controls.Add(this.ChangeReaderBtn);
@@ -274,13 +309,32 @@
             this.LibraryCardPanel.Controls.Add(this.NameLbl);
             this.LibraryCardPanel.Controls.Add(this.SurnameLbl);
             this.LibraryCardPanel.Controls.Add(this.CardNumberLbl);
-            this.LibraryCardPanel.Controls.Add(this.ReadersCardLbl);
             this.LibraryCardPanel.Controls.Add(this.PhotoPictureBox);
             this.LibraryCardPanel.Location = new System.Drawing.Point(12, 11);
             this.LibraryCardPanel.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.LibraryCardPanel.Name = "LibraryCardPanel";
             this.LibraryCardPanel.Size = new System.Drawing.Size(334, 207);
             this.LibraryCardPanel.TabIndex = 1;
+            // 
+            // HeadPanel
+            // 
+            this.HeadPanel.BackColor = System.Drawing.Color.Orange;
+            this.HeadPanel.Controls.Add(this.ReadersCardLbl);
+            this.HeadPanel.Location = new System.Drawing.Point(-1, -1);
+            this.HeadPanel.Name = "HeadPanel";
+            this.HeadPanel.Size = new System.Drawing.Size(334, 36);
+            this.HeadPanel.TabIndex = 7;
+            // 
+            // ReadersCardLbl
+            // 
+            this.ReadersCardLbl.AutoSize = true;
+            this.ReadersCardLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ReadersCardLbl.Location = new System.Drawing.Point(52, 0);
+            this.ReadersCardLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ReadersCardLbl.Name = "ReadersCardLbl";
+            this.ReadersCardLbl.Size = new System.Drawing.Size(233, 31);
+            this.ReadersCardLbl.TabIndex = 1;
+            this.ReadersCardLbl.Text = "Читательский билет";
             // 
             // PrintCardBtn
             // 
@@ -326,7 +380,7 @@
             // 
             this.PatronymicLbl.AutoSize = true;
             this.PatronymicLbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.PatronymicLbl.Location = new System.Drawing.Point(148, 122);
+            this.PatronymicLbl.Location = new System.Drawing.Point(148, 129);
             this.PatronymicLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PatronymicLbl.Name = "PatronymicLbl";
             this.PatronymicLbl.Size = new System.Drawing.Size(96, 28);
@@ -337,7 +391,7 @@
             // 
             this.NameLbl.AutoSize = true;
             this.NameLbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.NameLbl.Location = new System.Drawing.Point(148, 95);
+            this.NameLbl.Location = new System.Drawing.Point(148, 102);
             this.NameLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.NameLbl.Name = "NameLbl";
             this.NameLbl.Size = new System.Drawing.Size(51, 28);
@@ -348,7 +402,7 @@
             // 
             this.SurnameLbl.AutoSize = true;
             this.SurnameLbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.SurnameLbl.Location = new System.Drawing.Point(148, 65);
+            this.SurnameLbl.Location = new System.Drawing.Point(148, 72);
             this.SurnameLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.SurnameLbl.Name = "SurnameLbl";
             this.SurnameLbl.Size = new System.Drawing.Size(96, 28);
@@ -358,30 +412,20 @@
             // CardNumberLbl
             // 
             this.CardNumberLbl.AutoSize = true;
-            this.CardNumberLbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CardNumberLbl.Location = new System.Drawing.Point(148, 35);
+            this.CardNumberLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CardNumberLbl.ForeColor = System.Drawing.Color.OrangeRed;
+            this.CardNumberLbl.Location = new System.Drawing.Point(148, 42);
             this.CardNumberLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.CardNumberLbl.Name = "CardNumberLbl";
             this.CardNumberLbl.Size = new System.Drawing.Size(133, 28);
             this.CardNumberLbl.TabIndex = 2;
-            this.CardNumberLbl.Text = "23214124124";
-            // 
-            // ReadersCardLbl
-            // 
-            this.ReadersCardLbl.AutoSize = true;
-            this.ReadersCardLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ReadersCardLbl.Location = new System.Drawing.Point(97, 5);
-            this.ReadersCardLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.ReadersCardLbl.Name = "ReadersCardLbl";
-            this.ReadersCardLbl.Size = new System.Drawing.Size(233, 31);
-            this.ReadersCardLbl.TabIndex = 1;
-            this.ReadersCardLbl.Text = "Читательский билет";
+            this.CardNumberLbl.Text = "00000000000";
             // 
             // PhotoPictureBox
             // 
             this.PhotoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PhotoPictureBox.ImageLocation = "";
-            this.PhotoPictureBox.Location = new System.Drawing.Point(3, 3);
+            this.PhotoPictureBox.Location = new System.Drawing.Point(10, 40);
             this.PhotoPictureBox.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.PhotoPictureBox.Name = "PhotoPictureBox";
             this.PhotoPictureBox.Size = new System.Drawing.Size(90, 120);
@@ -408,6 +452,7 @@
             this.Controls.Add(this.LibraryCardPanel);
             this.Controls.Add(this.SearchBooksPanel);
             this.Controls.Add(this.ReadersBooksPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Name = "LibraryForm";
@@ -424,6 +469,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.LibraryCardPanel.ResumeLayout(false);
             this.LibraryCardPanel.PerformLayout();
+            this.HeadPanel.ResumeLayout(false);
+            this.HeadPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PhotoPictureBox)).EndInit();
             this.ResumeLayout(false);
 
@@ -456,5 +503,6 @@
         private Label qty_lbl;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private PrintDialog printDialog1;
+        private Panel HeadPanel;
     }
 }
