@@ -32,12 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LibraryForm));
             this.ReadersBooksPanel = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.accept_Book_btn = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.publisher_lbl1 = new System.Windows.Forms.Label();
-            this.author_lbl1 = new System.Windows.Forms.Label();
-            this.title_lbl1 = new System.Windows.Forms.Label();
             this.TitleReadersBooksLbl = new System.Windows.Forms.Label();
             this.SearchBooksPanel = new System.Windows.Forms.Panel();
             this.panel = new System.Windows.Forms.Panel();
@@ -61,8 +55,9 @@
             this.CardNumberLbl = new System.Windows.Forms.Label();
             this.ReadersCardLbl = new System.Windows.Forms.Label();
             this.PhotoPictureBox = new System.Windows.Forms.PictureBox();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.ReadersBooksPanel.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SearchBooksPanel.SuspendLayout();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BooksPictureBox)).BeginInit();
@@ -75,90 +70,15 @@
             // 
             this.ReadersBooksPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.ReadersBooksPanel.AutoScroll = true;
             this.ReadersBooksPanel.BackColor = System.Drawing.Color.FloralWhite;
             this.ReadersBooksPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ReadersBooksPanel.Controls.Add(this.panel1);
             this.ReadersBooksPanel.Controls.Add(this.TitleReadersBooksLbl);
             this.ReadersBooksPanel.Location = new System.Drawing.Point(12, 225);
             this.ReadersBooksPanel.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.ReadersBooksPanel.Name = "ReadersBooksPanel";
-            this.ReadersBooksPanel.Size = new System.Drawing.Size(334, 520);
+            this.ReadersBooksPanel.Size = new System.Drawing.Size(334, 517);
             this.ReadersBooksPanel.TabIndex = 1;
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.accept_Book_btn);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.publisher_lbl1);
-            this.panel1.Controls.Add(this.author_lbl1);
-            this.panel1.Controls.Add(this.title_lbl1);
-            this.panel1.Location = new System.Drawing.Point(4, 30);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(324, 126);
-            this.panel1.TabIndex = 7;
-            // 
-            // accept_Book_btn
-            // 
-            this.accept_Book_btn.BackColor = System.Drawing.Color.Moccasin;
-            this.accept_Book_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.accept_Book_btn.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.accept_Book_btn.Location = new System.Drawing.Point(175, 89);
-            this.accept_Book_btn.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.accept_Book_btn.Name = "accept_Book_btn";
-            this.accept_Book_btn.Size = new System.Drawing.Size(143, 30);
-            this.accept_Book_btn.TabIndex = 7;
-            this.accept_Book_btn.Text = "Принять книгу";
-            this.accept_Book_btn.UseVisualStyleBackColor = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(849, 11);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 28);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "В наличии: ";
-            // 
-            // publisher_lbl1
-            // 
-            this.publisher_lbl1.AutoSize = true;
-            this.publisher_lbl1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.publisher_lbl1.ForeColor = System.Drawing.Color.DimGray;
-            this.publisher_lbl1.Location = new System.Drawing.Point(4, 61);
-            this.publisher_lbl1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.publisher_lbl1.Name = "publisher_lbl1";
-            this.publisher_lbl1.Size = new System.Drawing.Size(121, 25);
-            this.publisher_lbl1.TabIndex = 3;
-            this.publisher_lbl1.Text = "ЭКСМО 2013";
-            // 
-            // author_lbl1
-            // 
-            this.author_lbl1.AutoSize = true;
-            this.author_lbl1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.author_lbl1.ForeColor = System.Drawing.Color.DimGray;
-            this.author_lbl1.Location = new System.Drawing.Point(4, 36);
-            this.author_lbl1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.author_lbl1.Name = "author_lbl1";
-            this.author_lbl1.Size = new System.Drawing.Size(167, 25);
-            this.author_lbl1.TabIndex = 2;
-            this.author_lbl1.Text = "Михаил Булгаков";
-            // 
-            // title_lbl1
-            // 
-            this.title_lbl1.AutoSize = true;
-            this.title_lbl1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.title_lbl1.Location = new System.Drawing.Point(4, 8);
-            this.title_lbl1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.title_lbl1.Name = "title_lbl1";
-            this.title_lbl1.Size = new System.Drawing.Size(215, 28);
-            this.title_lbl1.TabIndex = 1;
-            this.title_lbl1.Text = "Мастер и Маргарита";
             // 
             // TitleReadersBooksLbl
             // 
@@ -218,6 +138,7 @@
             this.giveBook_btn.TabIndex = 7;
             this.giveBook_btn.Text = "Выдать книгу";
             this.giveBook_btn.UseVisualStyleBackColor = false;
+            this.giveBook_btn.Click += new System.EventHandler(this.giveBook_btn_Click);
             // 
             // qty_lbl
             // 
@@ -468,6 +389,15 @@
             this.PhotoPictureBox.TabIndex = 0;
             this.PhotoPictureBox.TabStop = false;
             // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.AllowPrintToFile = false;
+            this.printDialog1.UseEXDialog = true;
+            // 
             // LibraryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -487,8 +417,6 @@
             this.Load += new System.EventHandler(this.LibraryForm_Load);
             this.ReadersBooksPanel.ResumeLayout(false);
             this.ReadersBooksPanel.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.SearchBooksPanel.ResumeLayout(false);
             this.panel.ResumeLayout(false);
             this.panel.PerformLayout();
@@ -526,11 +454,7 @@
         private Label publisher_lbl;
         private Button giveBook_btn;
         private Label qty_lbl;
-        private Panel panel1;
-        private Button accept_Book_btn;
-        private Label label1;
-        private Label publisher_lbl1;
-        private Label author_lbl1;
-        private Label title_lbl1;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private PrintDialog printDialog1;
     }
 }
