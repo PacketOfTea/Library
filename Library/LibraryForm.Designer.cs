@@ -151,7 +151,7 @@
             this.qty_lbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.qty_lbl.AutoSize = true;
             this.qty_lbl.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.qty_lbl.Location = new System.Drawing.Point(849, 11);
+            this.qty_lbl.Location = new System.Drawing.Point(845, 11);
             this.qty_lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.qty_lbl.Name = "qty_lbl";
             this.qty_lbl.Size = new System.Drawing.Size(122, 28);
@@ -238,6 +238,7 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
