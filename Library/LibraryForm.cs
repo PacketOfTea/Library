@@ -169,6 +169,12 @@ namespace LibraryForm
 				publisher_lbl.Text = SelectedBook.Publisher + " " + SelectedBook.PublicDate;
 				qty_lbl.Text = "В наличии: " + SelectedBook.NumberOfBooks;
 				BooksPictureBox.Load(SelectedBook.PhotoPictureBox);
+
+				periodLbl.Visible = false;
+				takeBook_btn.Visible = false;
+				giveBook_btn.Visible = true;
+				qty_lbl.Visible = true;
+
 			}
 			catch (Exception ex)
 			{
@@ -184,14 +190,14 @@ namespace LibraryForm
 #pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
 		}
 
-		private void panel_MouseMove(object sender, MouseEventArgs e)
-		{
-			//panel1.BackColor = Color.White;
+		public void panel_MouseMove(Panel panel)
+		{ 
+			panel.BackColor = Color.Moccasin;
 		}
 
-		private void panel_MouseLeave(object sender, EventArgs e)
+		public void panel_MouseLeave(Panel panel)
 		{
-			//panel1.BackColor = Color.FloralWhite;
+			panel.BackColor = Color.FloralWhite;
 		}
 
 		PinnedBook takedBook;
@@ -207,7 +213,7 @@ namespace LibraryForm
                             "VALUES (@Читатель, @Книга, @Дата_выдачи, @Выдана_до, @Дата_возврата)", sqlConnection);
             sqladd_PinnedBook(sqlCommand, "Книга взята");
 
-			BookPanel panel = new BookPanel(ReadersBooksPanel, ReadersBooksPanel.Controls.Count - 1, takedBook);
+			BookPanel panel = new BookPanel(ReadersBooksPanel, ReadersBooksPanel.Controls.Count - 1, takedBook, this);
 		}
 
 		private void showPinnedBook()
@@ -245,7 +251,7 @@ namespace LibraryForm
 					takedBook.DateIssuedBefore = Convert.ToDateTime(dt1.Rows[i][4]);
 					takedBook.DateReturn = null;
 
-					BookPanel panel = new BookPanel(ReadersBooksPanel, ReadersBooksPanel.Controls.Count - 1, takedBook);
+					BookPanel panel = new BookPanel(ReadersBooksPanel, ReadersBooksPanel.Controls.Count - 1, takedBook, this);
 				}
 			}
 		}
@@ -285,22 +291,36 @@ namespace LibraryForm
 		}
 
 		private void LibraryForm_MaximumSizeChanged(object sender, EventArgs e)
-    {
-        dataGridView1.Columns[0].Width = 62;
-        dataGridView1.Columns[1].Width = 358;
-        dataGridView1.Columns[2].Width = 216;
-        dataGridView1.Columns[3].Width = 95;
-        dataGridView1.Columns[4].Width = 150;
-        dataGridView1.Columns[6].Width = 100;
-    }
+		{
+			dataGridView1.Columns[0].Width = 62;
+			dataGridView1.Columns[1].Width = 358;
+			dataGridView1.Columns[2].Width = 216;
+			dataGridView1.Columns[3].Width = 95;
+			dataGridView1.Columns[4].Width = 150;
+			dataGridView1.Columns[6].Width = 100;
+		}
 
-    private void LibraryForm_SizeChanged(object sender, EventArgs e)
-    {
-        dataGridView1.Width = SearchBooksPanel.Width;
-        dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-        dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-        dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+		private void LibraryForm_SizeChanged(object sender, EventArgs e)
+		{
+			dataGridView1.Width = SearchBooksPanel.Width;
+			dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+			dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+			dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+		}
+		
+		public void ChangePanelBook(PinnedBook currentBook)
+        {
+			periodLbl.Visible = true;
+			takeBook_btn.Visible = true;
+			giveBook_btn.Visible = false;
+			qty_lbl.Visible = false;
+
+			title_lbl.Text = currentBook.Title;
+			author_lbl.Text = currentBook.Author;
+			publisher_lbl.Text = currentBook.Publisher;
+			//BooksPictureBox.Load(currentBook.PhotoPictureBox);
+			periodLbl.Text = "Дата выдачи: " + currentBook.DateOfIssue.Value.ToShortDateString() 
+				+ "\nВернуть до:   " + currentBook.DateIssuedBefore.Value.ToShortDateString();
+        }
     }
-				
-	}
 }
