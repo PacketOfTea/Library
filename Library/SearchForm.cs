@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace LibraryForm
 {
@@ -37,6 +38,20 @@ namespace LibraryForm
             }
             catch (Exception)
             {
+            }
+        }
+        public void Check_Is_Digit(object sender, KeyPressEventArgs e)
+        {
+            if (!Regex.Match(e.KeyChar.ToString(), @"[а-яА-Я]|[a-zA-Z]").Success && e.KeyChar != 8 && e.KeyChar != ' ')
+            {
+                e.Handled = true;
+            }
+        }
+        private void NumberOfBooksTxtBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != 8)
+            {
+                e.Handled = true;
             }
         }
     }

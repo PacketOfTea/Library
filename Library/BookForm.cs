@@ -1,4 +1,5 @@
 ﻿using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace LibraryForm
 {
@@ -41,7 +42,7 @@ namespace LibraryForm
 			{
 				command.Parameters.AddWithValue("Название_книги", TittleTxtBox.Text);
 				command.Parameters.AddWithValue("Автор_книги", AuthorTxtBox.Text);
-				command.Parameters.AddWithValue("Дата_издания", PublicDateTxtBox.Text);
+				command.Parameters.AddWithValue("Дата_издания", PublicDateMskdTxtBox.Text);
 				command.Parameters.AddWithValue("Издательство", PublisherTxtBox.Text);
 				command.Parameters.AddWithValue("Обложка", PhotoPictureBox.ToString());
 				command.Parameters.AddWithValue("Наличие", NumberOfBooksTxtBox.Text);
@@ -69,7 +70,7 @@ namespace LibraryForm
 			}
 			TittleTxtBox.Text = CurrentBook.Title;
 			AuthorTxtBox.Text = CurrentBook.Author;
-			PublicDateTxtBox.Text = CurrentBook.PublicDate;
+			PublicDateMskdTxtBox.Text = CurrentBook.PublicDate;
 			PublisherTxtBox.Text = CurrentBook.Publisher;
             try
             {
@@ -84,7 +85,7 @@ namespace LibraryForm
 
 		private void SaveBtn_Click(object sender, EventArgs e)
 		{
-			if (TittleTxtBox.Text == "" || AuthorTxtBox.Text == "" || PublicDateTxtBox.Text == "" || PublisherTxtBox.Text == "" || NumberOfBooksTxtBox.Text == "")
+			if (TittleTxtBox.Text == "" || AuthorTxtBox.Text == "" || PublicDateMskdTxtBox.Text == "" || PublisherTxtBox.Text == "" || NumberOfBooksTxtBox.Text == "")
 			{
 				MessageBox.Show("Заполните все данные");
 			}
@@ -139,6 +140,13 @@ namespace LibraryForm
 		private void NumberOfBooksTxtBox_KeyPress(object sender, KeyPressEventArgs e)
 		{
 			if (!Char.IsDigit(e.KeyChar) && e.KeyChar != 8)
+			{
+				e.Handled = true;
+			}
+		}
+		public void Check_Is_Digit(object sender, KeyPressEventArgs e)
+		{
+			if (!Regex.Match(e.KeyChar.ToString(), @"[а-яА-Я]|[a-zA-Z]").Success && e.KeyChar != 8 && e.KeyChar != ' ')
 			{
 				e.Handled = true;
 			}

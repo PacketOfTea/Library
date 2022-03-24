@@ -33,7 +33,6 @@
             this.SaveBtn = new System.Windows.Forms.Button();
             this.DeleteBtn = new System.Windows.Forms.Button();
             this.PublisherTxtBox = new System.Windows.Forms.TextBox();
-            this.PublicDateTxtBox = new System.Windows.Forms.TextBox();
             this.TittleTxtBox = new System.Windows.Forms.TextBox();
             this.AuthorTxtBox = new System.Windows.Forms.TextBox();
             this.PublisherLbl = new System.Windows.Forms.Label();
@@ -43,6 +42,7 @@
             this.PhotoPictureBox = new System.Windows.Forms.PictureBox();
             this.NumberOfBooksTxtBox = new System.Windows.Forms.TextBox();
             this.NumberOfBooksLbl = new System.Windows.Forms.Label();
+            this.PublicDateMskdTxtBox = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.PhotoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,13 +87,7 @@
             this.PublisherTxtBox.Name = "PublisherTxtBox";
             this.PublisherTxtBox.Size = new System.Drawing.Size(221, 27);
             this.PublisherTxtBox.TabIndex = 31;
-            // 
-            // PublicDateTxtBox
-            // 
-            this.PublicDateTxtBox.Location = new System.Drawing.Point(361, 97);
-            this.PublicDateTxtBox.Name = "PublicDateTxtBox";
-            this.PublicDateTxtBox.Size = new System.Drawing.Size(221, 27);
-            this.PublicDateTxtBox.TabIndex = 30;
+            this.PublisherTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Check_Is_Digit);
             // 
             // TittleTxtBox
             // 
@@ -108,6 +102,7 @@
             this.AuthorTxtBox.Name = "AuthorTxtBox";
             this.AuthorTxtBox.Size = new System.Drawing.Size(221, 27);
             this.AuthorTxtBox.TabIndex = 28;
+            this.AuthorTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Check_Is_Digit);
             // 
             // PublisherLbl
             // 
@@ -176,19 +171,28 @@
             this.NumberOfBooksLbl.TabIndex = 35;
             this.NumberOfBooksLbl.Text = "Количество книг";
             // 
+            // PublicDateMskdTxtBox
+            // 
+            this.PublicDateMskdTxtBox.Location = new System.Drawing.Point(361, 97);
+            this.PublicDateMskdTxtBox.Mask = "0000";
+            this.PublicDateMskdTxtBox.Name = "PublicDateMskdTxtBox";
+            this.PublicDateMskdTxtBox.Size = new System.Drawing.Size(221, 27);
+            this.PublicDateMskdTxtBox.TabIndex = 37;
+            this.PublicDateMskdTxtBox.ValidatingType = typeof(int);
+            // 
             // BookForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(595, 288);
+            this.Controls.Add(this.PublicDateMskdTxtBox);
             this.Controls.Add(this.NumberOfBooksTxtBox);
             this.Controls.Add(this.NumberOfBooksLbl);
             this.Controls.Add(this.LoadImageBtn);
             this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.DeleteBtn);
             this.Controls.Add(this.PublisherTxtBox);
-            this.Controls.Add(this.PublicDateTxtBox);
             this.Controls.Add(this.TittleTxtBox);
             this.Controls.Add(this.AuthorTxtBox);
             this.Controls.Add(this.PublisherLbl);
@@ -214,7 +218,6 @@
         private Button SaveBtn;
         private Button DeleteBtn;
         private TextBox PublisherTxtBox;
-        private TextBox PublicDateTxtBox;
         private TextBox TittleTxtBox;
         private TextBox AuthorTxtBox;
         private Label PublisherLbl;
@@ -224,5 +227,6 @@
         private PictureBox PhotoPictureBox;
         private TextBox NumberOfBooksTxtBox;
         private Label NumberOfBooksLbl;
+        private MaskedTextBox PublicDateMskdTxtBox;
     }
 }

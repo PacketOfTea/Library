@@ -35,8 +35,8 @@
             this.AuthorLbl = new System.Windows.Forms.Label();
             this.AuthorTxtBox = new System.Windows.Forms.TextBox();
             this.NameTxtBox = new System.Windows.Forms.TextBox();
-            this.PublicDateTxtBox = new System.Windows.Forms.TextBox();
             this.PublisherTxtBox = new System.Windows.Forms.TextBox();
+            this.PublicDateTxtBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // PublisherLbl
@@ -87,6 +87,7 @@
             this.AuthorTxtBox.Size = new System.Drawing.Size(181, 30);
             this.AuthorTxtBox.TabIndex = 27;
             this.AuthorTxtBox.TextChanged += new System.EventHandler(this.AuthorTxtBox_TextChanged);
+            this.AuthorTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Check_Is_Digit);
             // 
             // NameTxtBox
             // 
@@ -97,15 +98,6 @@
             this.NameTxtBox.TabIndex = 28;
             this.NameTxtBox.TextChanged += new System.EventHandler(this.AuthorTxtBox_TextChanged);
             // 
-            // PublicDateTxtBox
-            // 
-            this.PublicDateTxtBox.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.PublicDateTxtBox.Location = new System.Drawing.Point(149, 91);
-            this.PublicDateTxtBox.Name = "PublicDateTxtBox";
-            this.PublicDateTxtBox.Size = new System.Drawing.Size(181, 30);
-            this.PublicDateTxtBox.TabIndex = 29;
-            this.PublicDateTxtBox.TextChanged += new System.EventHandler(this.AuthorTxtBox_TextChanged);
-            // 
             // PublisherTxtBox
             // 
             this.PublisherTxtBox.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -114,6 +106,17 @@
             this.PublisherTxtBox.Size = new System.Drawing.Size(181, 30);
             this.PublisherTxtBox.TabIndex = 30;
             this.PublisherTxtBox.TextChanged += new System.EventHandler(this.AuthorTxtBox_TextChanged);
+            this.PublisherTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Check_Is_Digit);
+            // 
+            // PublicDateTxtBox
+            // 
+            this.PublicDateTxtBox.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.PublicDateTxtBox.Location = new System.Drawing.Point(149, 91);
+            this.PublicDateTxtBox.Name = "PublicDateTxtBox";
+            this.PublicDateTxtBox.Size = new System.Drawing.Size(181, 30);
+            this.PublicDateTxtBox.TabIndex = 32;
+            this.PublicDateTxtBox.TextChanged += new System.EventHandler(this.AuthorTxtBox_TextChanged);
+            this.PublicDateTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumberOfBooksTxtBox_KeyPress);
             // 
             // SearchForm
             // 
@@ -121,8 +124,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(341, 176);
-            this.Controls.Add(this.PublisherTxtBox);
             this.Controls.Add(this.PublicDateTxtBox);
+            this.Controls.Add(this.PublisherTxtBox);
             this.Controls.Add(this.NameTxtBox);
             this.Controls.Add(this.AuthorTxtBox);
             this.Controls.Add(this.PublisherLbl);
@@ -149,7 +152,7 @@
         private Label AuthorLbl;
         private TextBox AuthorTxtBox;
         private TextBox NameTxtBox;
-        private TextBox PublicDateTxtBox;
         private TextBox PublisherTxtBox;
+        private TextBox PublicDateTxtBox;
     }
 }

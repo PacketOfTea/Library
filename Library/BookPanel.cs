@@ -8,10 +8,13 @@
 		public Label title_lbl = new Label();
 		public Label author_lbl = new Label();
 		public Label period = new Label();
-		
+
+		public LibraryForm library;
+
 		public BookPanel() { }
-		public BookPanel(Panel ReadersBooksPanel, int k, PinnedBook currentBook)
+		public BookPanel(Panel ReadersBooksPanel, int k, PinnedBook currentBook, LibraryForm library_form)
 		{
+			library = library_form;
 			takedBook = currentBook;
 			// 
 			// panel
@@ -28,7 +31,7 @@
 			this.panel.Name = "panel";
 			this.panel.Size = new System.Drawing.Size(314, 105);
 			this.panel.TabIndex = 8;
-			this.panel.BackColor = Color.Moccasin;
+			this.panel.BackColor = Color.FloralWhite;
 			// 
 			// period
 			// 
@@ -65,7 +68,34 @@
 			this.title_lbl.TabIndex = 1;
 			this.title_lbl.Text = takedBook.Title;
 
+			
+			title_lbl.Click += new System.EventHandler(panel_Click);
+			title_lbl.MouseMove += new System.Windows.Forms.MouseEventHandler(panel_MouseMove);
+
+			author_lbl.Click += new System.EventHandler(panel_Click);
+			author_lbl.MouseMove += new System.Windows.Forms.MouseEventHandler(panel_MouseMove);
+
+			period.Click += new System.EventHandler(panel_Click);
+			period.MouseMove += new System.Windows.Forms.MouseEventHandler(panel_MouseMove);
+
+			panel.Click += new System.EventHandler(panel_Click);
+			panel.MouseMove += new System.Windows.Forms.MouseEventHandler(panel_MouseMove);
+			panel.MouseLeave += new System.EventHandler(panel_MouseLeave);
+
+
 			ReadersBooksPanel.Controls.Add(panel);
+		}
+		private void panel_Click(object sender, EventArgs e)
+        {
+			library.ChangePanelBook(takedBook);
+		}
+		private void panel_MouseMove(object sender, MouseEventArgs e)
+		{
+			library.panel_MouseMove(panel);
+		}
+		private void panel_MouseLeave(object sender, EventArgs e)
+		{
+			library.panel_MouseLeave(panel);
 		}
 	}
 }
