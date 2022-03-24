@@ -36,7 +36,7 @@ namespace LibraryForm
 			fillData(CurrentBook);
 		}
 
-		public void sqladd(SqlCommand command, string message)
+		public void sqladd_BOOK(SqlCommand command, string message)
 		{
 			try
 			{
@@ -99,12 +99,12 @@ namespace LibraryForm
 							"[Издательство], [Обложка], [Наличие]) " +
 							"VALUES (@Название_книги, @Автор_книги, @Дата_издания, @Издательство, @Обложка, @Наличие)"
 										, sqlConnection);
-						sqladd(sqlCommand, "Книга добавлена в БД");
+						sqladd_BOOK(sqlCommand, "Книга добавлена в БД");
 						break;
 					case true:
 						sqlCommand = new SqlCommand($"Update [Книги] set [Название книги] = @Название_книги, [Автор книги] = @Автор_книги, [Дата издания] = @Дата_издания, [Издательство] = @Издательство, [Обложка] = @Обложка, [Наличие] = @Наличие " +
 								$"Where Id={CurrentBook.id}", sqlConnection);
-						sqladd(sqlCommand, "Книга изменена в БД");
+						sqladd_BOOK(sqlCommand, "Книга изменена в БД");
 						break;
 				}
 				main.showDB_BOOKS(main.fillDatatableBooks());

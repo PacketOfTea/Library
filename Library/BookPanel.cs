@@ -88,6 +88,7 @@
 		private void panel_Click(object sender, EventArgs e)
         {
 			library.ChangePanelBook(takedBook);
+
 		}
 		private void panel_MouseMove(object sender, MouseEventArgs e)
 		{
