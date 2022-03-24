@@ -29,9 +29,11 @@
 			this.panel.Location = new System.Drawing.Point(4, 30 + k * 109);
 			this.panel.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
 			this.panel.Name = "panel";
-			this.panel.Size = new System.Drawing.Size(314, 105);
+			this.panel.Size = new System.Drawing.Size(274, 105);
 			this.panel.TabIndex = 8;
-			this.panel.BackColor = Color.FloralWhite;
+			this.panel.BackColor = Color.White;
+			this.panel.AutoScroll = true;
+			this.panel.Dock = DockStyle.Top;
 			// 
 			// period
 			// 
@@ -67,16 +69,19 @@
 			this.title_lbl.Size = new System.Drawing.Size(278, 28);
 			this.title_lbl.TabIndex = 1;
 			this.title_lbl.Text = takedBook.Title;
-
 			
 			title_lbl.Click += new System.EventHandler(panel_Click);
 			title_lbl.MouseMove += new System.Windows.Forms.MouseEventHandler(panel_MouseMove);
+			title_lbl.MouseLeave += new System.EventHandler(panel_MouseLeave);
 
 			author_lbl.Click += new System.EventHandler(panel_Click);
 			author_lbl.MouseMove += new System.Windows.Forms.MouseEventHandler(panel_MouseMove);
+			author_lbl.MouseLeave += new System.EventHandler(panel_MouseLeave);
 
 			period.Click += new System.EventHandler(panel_Click);
 			period.MouseMove += new System.Windows.Forms.MouseEventHandler(panel_MouseMove);
+			period.MouseLeave += new System.EventHandler(panel_MouseLeave);
+
 
 			panel.Click += new System.EventHandler(panel_Click);
 			panel.MouseMove += new System.Windows.Forms.MouseEventHandler(panel_MouseMove);

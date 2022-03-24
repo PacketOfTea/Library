@@ -197,7 +197,7 @@ namespace LibraryForm
 
 		public void panel_MouseLeave(Panel panel)
 		{
-			panel.BackColor = Color.FloralWhite;
+			panel.BackColor = Color.White;
 		}
 
 		PinnedBook takedBook;
