@@ -1,7 +1,7 @@
 ﻿
 namespace LibraryForm
 {
-	public struct Book
+	public class Book
 	{
 		public int id;
 		public string? Title;
@@ -11,7 +11,8 @@ namespace LibraryForm
 		public string? PhotoPictureBox;
 		public string? NumberOfBooks;
 
-		public void clear()
+		public Book() {	}
+		public virtual void clear()
 		{
 			id = 0;
 			Title = null;
@@ -21,6 +22,37 @@ namespace LibraryForm
 			PhotoPictureBox = null;
 			NumberOfBooks = null;
 		}
+	}
+
+	public class PinnedBook : Book
+	{
+		public DateTime? DateOfIssue;
+		public DateTime? DateIssuedBefore;
+		public DateTime? DateReturn;
+
+		public PinnedBook(Book book) 
+		{
+			id = book.id;
+			Title = book.Title;
+			Author = book.Author;
+			PublicDate = book.PublicDate;
+			Publisher = book.Publisher;
+			PhotoPictureBox = book.PhotoPictureBox;
+			NumberOfBooks = book.NumberOfBooks;
+		}
+		public override void clear()
+        {
+			id = 0;
+			Title = null;
+			Author = null;
+			PublicDate = null;
+			Publisher = null;
+			PhotoPictureBox = null;
+			NumberOfBooks = null;
+			DateOfIssue = null;
+			DateIssuedBefore = null;
+			DateReturn = null;
+        }
 	}
 
 	public struct Reader
@@ -46,4 +78,5 @@ namespace LibraryForm
 			Photo = Library.Properties.Resources.NoPhoto;
 		}
 	}
+
 }
