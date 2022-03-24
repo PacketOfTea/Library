@@ -26,13 +26,12 @@
 			this.panel.Controls.Add(this.author_lbl);
 			this.panel.Controls.Add(this.title_lbl);
 			this.panel.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.panel.Location = new System.Drawing.Point(4, 30 + k * 109);
+			this.panel.Location = new System.Drawing.Point(4, k * 109);
 			this.panel.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
 			this.panel.Name = "panel";
-			this.panel.Size = new System.Drawing.Size(274, 105);
+			this.panel.Size = new System.Drawing.Size(294, 105);
 			this.panel.TabIndex = 8;
 			this.panel.BackColor = Color.White;
-			this.panel.AutoScroll = true;
 			this.panel.Dock = DockStyle.Top;
 			// 
 			// period
@@ -93,7 +92,6 @@
 		private void panel_Click(object sender, EventArgs e)
         {
 			library.ChangePanelBook(takedBook);
-
 		}
 		private void panel_MouseMove(object sender, MouseEventArgs e)
 		{

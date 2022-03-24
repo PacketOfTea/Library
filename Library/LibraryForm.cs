@@ -222,7 +222,7 @@ namespace LibraryForm
 								"VALUES (@Читатель, @Книга, @Дата_выдачи, @Выдана_до, @Дата_возврата)", sqlConnection);
 				sqladd_PinnedBook(sqlCommand, "Книга выдана");
 
-				panelTakedBook = new BookPanel(ReadersBooksPanel, ReadersBooksPanel.Controls.Count - 1, takedBook, this);
+				panelTakedBook = new BookPanel(ReadersBooksPanel, ReadersBooksPanel.Controls.Count, takedBook, this);
 
 				showDB_BOOKS(fillDatatableBooks());
 			}
@@ -230,7 +230,6 @@ namespace LibraryForm
             {
 				MessageBox.Show("Выбранной книги нет в наличии");
             }
-
 		}
 
 		private void takeBook_btn_Click(object sender, EventArgs e)
@@ -240,7 +239,7 @@ namespace LibraryForm
                 "[Книга] = @Книга, [Дата выдачи] = @Дата_выдачи, [Выдана до] = @Выдана_до, " +
 				$"[Дата возврата] = @Дата_возврата Where Читатель = {CurrentReader.id} and Книга = {takedBook.id}",
 				sqlConnection);
-			sqladd_PinnedBook(sqlCommand, "Книга обрабатывается");
+			sqladd_PinnedBook(sqlCommand, "Книга успешно принята");
 			ReadersBooksPanel.Controls.Clear();
 			showPinnedBook();
 
@@ -273,7 +272,7 @@ namespace LibraryForm
 				}
 
 				SqlDataAdapter dataAdapter1 = new SqlDataAdapter("SELECT id, [Название книги], [Автор книги], [Дата издания], " +
-						$"[Издательство] FROM Книги WHERE id IN ({books})", sqlConnection);
+						$"[Издательство], [Обложка] FROM Книги WHERE id IN ({books})", sqlConnection);
 				DataSet dataset1 = new DataSet();
 				dataAdapter1.Fill(dataset1);
 				DataTable dtBook = dataset1.Tables[0];
@@ -286,11 +285,12 @@ namespace LibraryForm
 					takedBook.Author = dtBook.Rows[i][2].ToString();
 					takedBook.PublicDate = dtBook.Rows[i][3].ToString();
 					takedBook.Publisher = dtBook.Rows[i][4].ToString();
+					takedBook.PhotoPictureBox = dtBook.Rows[i][5].ToString();
 					takedBook.DateOfIssue = Convert.ToDateTime(dt1.Rows[i][3]);
 					takedBook.DateIssuedBefore = Convert.ToDateTime(dt1.Rows[i][4]);
 					takedBook.DateReturn = null;
 
-					panelTakedBook = new BookPanel(ReadersBooksPanel, ReadersBooksPanel.Controls.Count - 1, takedBook, this);
+					panelTakedBook = new BookPanel(ReadersBooksPanel, ReadersBooksPanel.Controls.Count, takedBook, this);
 				}
 			}
 		}
