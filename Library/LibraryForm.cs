@@ -201,25 +201,63 @@ namespace LibraryForm
 		}
 
 		PinnedBook takedBook;
+		BookPanel panelTakedBook;
 		private void giveBook_btn_Click(object sender, EventArgs e)
 		{
+			SqlCommand sqlCommand;
 			takedBook = new PinnedBook(SelectedBook);
 			takedBook.DateOfIssue = DateTime.Today;
 			takedBook.DateIssuedBefore = DateTime.Today.AddDays(14);
 			takedBook.DateReturn = null;
 
-			SqlCommand sqlCommand = new SqlCommand($"Insert INTO [Выданные книги] ([Читатель], [Книга], [Дата выдачи], " +
-                            "[Выдана до], [Дата возврата]) " +
-                            "VALUES (@Читатель, @Книга, @Дата_выдачи, @Выдана_до, @Дата_возврата)", sqlConnection);
-            sqladd_PinnedBook(sqlCommand, "Книга взята");
+			if (Convert.ToInt32(takedBook.NumberOfBooks) > 0)
+			{
+				takedBook.NumberOfBooks = (Convert.ToInt32(takedBook.NumberOfBooks) - 1).ToString();
+				sqlCommand = new SqlCommand($"Update [Книги] set [Наличие] = @Наличие Where Id={takedBook.id}",
+					sqlConnection);
+				sqladd_BOOK(sqlCommand);
 
-			BookPanel panel = new BookPanel(ReadersBooksPanel, ReadersBooksPanel.Controls.Count - 1, takedBook, this);
+				sqlCommand = new SqlCommand($"Insert INTO [Выданные книги] ([Читатель], [Книга], [Дата выдачи], " +
+								"[Выдана до], [Дата возврата]) " +
+								"VALUES (@Читатель, @Книга, @Дата_выдачи, @Выдана_до, @Дата_возврата)", sqlConnection);
+				sqladd_PinnedBook(sqlCommand, "Книга выдана");
+
+				panelTakedBook = new BookPanel(ReadersBooksPanel, ReadersBooksPanel.Controls.Count, takedBook, this);
+
+				showDB_BOOKS(fillDatatableBooks());
+			}
+			else
+            {
+				MessageBox.Show("Выбранной книги нет в наличии");
+            }
 		}
+
+		private void takeBook_btn_Click(object sender, EventArgs e)
+		{
+			takedBook.DateReturn = DateTime.Today;
+			SqlCommand sqlCommand = new SqlCommand("Update [Выданные книги] set [Читатель] = @Читатель, " +
+                "[Книга] = @Книга, [Дата выдачи] = @Дата_выдачи, [Выдана до] = @Выдана_до, " +
+				$"[Дата возврата] = @Дата_возврата Where Читатель = {CurrentReader.id} and Книга = {takedBook.id}",
+				sqlConnection);
+			sqladd_PinnedBook(sqlCommand, "Книга успешно принята");
+			ReadersBooksPanel.Controls.Clear();
+			showPinnedBook();
+
+
+			takedBook.NumberOfBooks = (Convert.ToInt32(takedBook.NumberOfBooks) + 1).ToString();
+			sqlCommand = new SqlCommand($"Update [Книги] set [Наличие] = @Наличие Where Id={takedBook.id}",
+				sqlConnection);
+			sqladd_BOOK(sqlCommand);
+
+			showDB_BOOKS(fillDatatableBooks());
+		}
+
 
 		private void showPinnedBook()
         {
 			SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT id, [Читатель], [Книга], [Дата выдачи], " +
-				$"[Выдана до], [Дата возврата] FROM [Выданные книги] WHERE [Читатель] = {CurrentReader.id}", sqlConnection);
+				$"[Выдана до], [Дата возврата] FROM [Выданные книги] WHERE [Читатель] = {CurrentReader.id}" +
+                $" and [Дата возврата] IS NULL", sqlConnection);
 			DataSet dataset = new DataSet();
 			dataAdapter.Fill(dataset);
 			DataTable dt1 = dataset.Tables[0];
@@ -234,7 +272,7 @@ namespace LibraryForm
 				}
 
 				SqlDataAdapter dataAdapter1 = new SqlDataAdapter("SELECT id, [Название книги], [Автор книги], [Дата издания], " +
-						$"[Издательство] FROM Книги WHERE id IN ({books})", sqlConnection);
+						$"[Издательство], [Обложка] FROM Книги WHERE id IN ({books})", sqlConnection);
 				DataSet dataset1 = new DataSet();
 				dataAdapter1.Fill(dataset1);
 				DataTable dtBook = dataset1.Tables[0];
@@ -247,12 +285,30 @@ namespace LibraryForm
 					takedBook.Author = dtBook.Rows[i][2].ToString();
 					takedBook.PublicDate = dtBook.Rows[i][3].ToString();
 					takedBook.Publisher = dtBook.Rows[i][4].ToString();
+					takedBook.PhotoPictureBox = dtBook.Rows[i][5].ToString();
 					takedBook.DateOfIssue = Convert.ToDateTime(dt1.Rows[i][3]);
 					takedBook.DateIssuedBefore = Convert.ToDateTime(dt1.Rows[i][4]);
 					takedBook.DateReturn = null;
 
-					BookPanel panel = new BookPanel(ReadersBooksPanel, ReadersBooksPanel.Controls.Count - 1, takedBook, this);
+					panelTakedBook = new BookPanel(ReadersBooksPanel, ReadersBooksPanel.Controls.Count, takedBook, this);
 				}
+			}
+		}
+
+		public void sqladd_BOOK(SqlCommand command)
+		{
+			try
+			{
+				command.Parameters.AddWithValue("Наличие", takedBook.NumberOfBooks);
+
+				if (command.ExecuteNonQuery() == 1)
+				{
+					//MessageBox.Show(message);
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
 			}
 		}
 
@@ -315,6 +371,8 @@ namespace LibraryForm
 			giveBook_btn.Visible = false;
 			qty_lbl.Visible = false;
 
+			takedBook = currentBook;
+
 			title_lbl.Text = currentBook.Title;
 			author_lbl.Text = currentBook.Author;
 			publisher_lbl.Text = currentBook.Publisher;
@@ -322,5 +380,6 @@ namespace LibraryForm
 			periodLbl.Text = "Дата выдачи: " + currentBook.DateOfIssue.Value.ToShortDateString() 
 				+ "\nВернуть до:   " + currentBook.DateIssuedBefore.Value.ToShortDateString();
         }
+
     }
 }
