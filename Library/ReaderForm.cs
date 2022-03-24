@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-
+using System.Text.RegularExpressions;
 
 namespace LibraryForm
 {
@@ -116,7 +116,7 @@ namespace LibraryForm
 
 		private void SaveBtn_Click(object sender, EventArgs e)
 		{
-			if (SurnameTxtBox.Text == "" || NameTxtBox.Text == "" || PatronymicTxtBox.Text == "" || CardNumberMskdTxtBox.Text == "" || AddressTxtBox.Text == "" || PhoneNumberMskdTxtBox.Text == "")
+			if (SurnameTxtBox.Text == "" || NameTxtBox.Text == "" || PatronymicTxtBox.Text == "" || CardNumberMskdTxtBox.Text == "" || AddressTxtBox.Text == "" || PhoneNumberMskdTxtBox.Text == "+7 (   )    -")
 			{
 				MessageBox.Show("Заполните все данные");
 			}
@@ -181,6 +181,13 @@ namespace LibraryForm
 				e.Handled = true;
 			}
 		}
+		public void Check_Is_Digit(object sender, KeyPressEventArgs e)
+		{
+			if (!Regex.Match(e.KeyChar.ToString(), @"[а-яА-Я]").Success && e.KeyChar != 8 && e.KeyChar != '-')
+			{
+				e.Handled = true;
+			}
+		}
 
 		private void LoadImageBtn_Click(object sender, EventArgs e)
 		{
@@ -192,5 +199,13 @@ namespace LibraryForm
 				PhotoPictureBox.Image = Image.FromFile(openFileDialog1.FileName);
 			}
 		}
-	}
+
+        private void AddressTxtBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+			if (!Regex.Match(e.KeyChar.ToString(), @"[а-яА-Я]").Success && e.KeyChar != 8 && e.KeyChar != ' ' && e.KeyChar != ',' && e.KeyChar != '.' && !Char.IsDigit(e.KeyChar))
+			{
+				e.Handled = true;
+			}
+		}
+    }
 }

@@ -238,6 +238,7 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
@@ -414,7 +415,7 @@
             // 
             this.CardNumberLbl.AutoSize = true;
             this.CardNumberLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CardNumberLbl.ForeColor = System.Drawing.Color.OrangeRed;
+            this.CardNumberLbl.ForeColor = System.Drawing.Color.Sienna;
             this.CardNumberLbl.Location = new System.Drawing.Point(148, 42);
             this.CardNumberLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.CardNumberLbl.Name = "CardNumberLbl";
@@ -459,8 +460,10 @@
             this.Name = "LibraryForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Библиотека";
+            this.MaximumSizeChanged += new System.EventHandler(this.LibraryForm_MaximumSizeChanged);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LibraryForm_FormClosed);
             this.Load += new System.EventHandler(this.LibraryForm_Load);
+            this.SizeChanged += new System.EventHandler(this.LibraryForm_SizeChanged);
             this.ReadersBooksPanel.ResumeLayout(false);
             this.ReadersBooksPanel.PerformLayout();
             this.SearchBooksPanel.ResumeLayout(false);

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace LibraryForm
 {
@@ -96,5 +97,12 @@ namespace LibraryForm
 			if (e.KeyCode == Keys.Enter)
 				LoginBtn_Click(sender, e);
 		}
-    }
+		public void CheckIsNumber(object sender, KeyPressEventArgs e)
+		{
+			if (!Char.IsDigit(e.KeyChar) && e.KeyChar != 8)
+			{
+				e.Handled = true;
+			}
+		}
+	}
 }

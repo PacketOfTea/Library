@@ -126,6 +126,7 @@
             this.SurnameTxtBox.Name = "SurnameTxtBox";
             this.SurnameTxtBox.Size = new System.Drawing.Size(221, 27);
             this.SurnameTxtBox.TabIndex = 10;
+            this.SurnameTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Check_Is_Digit);
             // 
             // NameTxtBox
             // 
@@ -133,6 +134,7 @@
             this.NameTxtBox.Name = "NameTxtBox";
             this.NameTxtBox.Size = new System.Drawing.Size(221, 27);
             this.NameTxtBox.TabIndex = 11;
+            this.NameTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Check_Is_Digit);
             // 
             // PatronymicTxtBox
             // 
@@ -140,6 +142,7 @@
             this.PatronymicTxtBox.Name = "PatronymicTxtBox";
             this.PatronymicTxtBox.Size = new System.Drawing.Size(221, 27);
             this.PatronymicTxtBox.TabIndex = 12;
+            this.PatronymicTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Check_Is_Digit);
             // 
             // AddressTxtBox
             // 
@@ -147,6 +150,7 @@
             this.AddressTxtBox.Name = "AddressTxtBox";
             this.AddressTxtBox.Size = new System.Drawing.Size(221, 27);
             this.AddressTxtBox.TabIndex = 14;
+            this.AddressTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AddressTxtBox_KeyPress);
             // 
             // DeleteBtn
             // 
@@ -189,7 +193,6 @@
             this.CardNumberMskdTxtBox.Location = new System.Drawing.Point(361, 135);
             this.CardNumberMskdTxtBox.Mask = "000000000000";
             this.CardNumberMskdTxtBox.Name = "CardNumberMskdTxtBox";
-            this.CardNumberMskdTxtBox.PromptChar = '#';
             this.CardNumberMskdTxtBox.Size = new System.Drawing.Size(221, 27);
             this.CardNumberMskdTxtBox.TabIndex = 19;
             this.CardNumberMskdTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CardNumberMskdTxtBox_KeyPress);

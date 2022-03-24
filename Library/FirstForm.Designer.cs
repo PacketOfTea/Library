@@ -48,6 +48,7 @@
             this.ReaderCardTxtBox.Size = new System.Drawing.Size(361, 34);
             this.ReaderCardTxtBox.TabIndex = 0;
             this.ReaderCardTxtBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ReaderCardTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckIsNumber);
             this.ReaderCardTxtBox.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.ReaderCardTxtBox_PreviewKeyDown);
             // 
             // NameLbl

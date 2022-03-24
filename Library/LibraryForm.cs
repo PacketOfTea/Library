@@ -25,8 +25,6 @@ namespace LibraryForm
                 sqlConnection.Open();
             }
             CurrentReader = reader;
-            //HeadPanel.BackColor = ColorTranslator.FromHtml("#6b7fc8");
-            //LibraryCardPanel.BackColor = ColorTranslator.FromHtml("#cbcfda");
         }
 
         private void LibraryForm_Load(object sender, EventArgs e)
@@ -202,6 +200,24 @@ namespace LibraryForm
         {
             e.Graphics.DrawImageUnscaled(b, 0, 0);
             e.Graphics.PageUnit = GraphicsUnit.Inch;
+        }
+
+        private void LibraryForm_MaximumSizeChanged(object sender, EventArgs e)
+        {
+            dataGridView1.Columns[0].Width = 62;
+            dataGridView1.Columns[1].Width = 358;
+            dataGridView1.Columns[2].Width = 216;
+            dataGridView1.Columns[3].Width = 95;
+            dataGridView1.Columns[4].Width = 150;
+            dataGridView1.Columns[6].Width = 100;
+        }
+
+        private void LibraryForm_SizeChanged(object sender, EventArgs e)
+        {
+            dataGridView1.Width = SearchBooksPanel.Width;
+            dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
     }
 }
