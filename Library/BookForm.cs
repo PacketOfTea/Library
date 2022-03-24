@@ -8,7 +8,7 @@ namespace LibraryForm
 		LibraryForm main;
 		private SqlConnection sqlConnection;
 		bool ModeEdit = false;
-		Book CurrentBook;
+		Book CurrentBook = new Book();
 
 		public BookForm(bool mode, SqlConnection connect)
 		{
