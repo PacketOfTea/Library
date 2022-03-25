@@ -44,7 +44,17 @@ namespace LibraryForm
 				command.Parameters.AddWithValue("Автор_книги", AuthorTxtBox.Text);
 				command.Parameters.AddWithValue("Дата_издания", PublicDateMskdTxtBox.Text);
 				command.Parameters.AddWithValue("Издательство", PublisherTxtBox.Text);
-				command.Parameters.AddWithValue("Обложка", PhotoPictureBox.ToString());
+
+				if (PhotoPictureBox.Image != null)
+				{
+					byte[] arr_picture;
+					ImageConverter converter = new ImageConverter();
+#pragma warning disable CS8600 // Преобразование литерала, допускающего значение NULL или возможного значения NULL в тип, не допускающий значение NULL.
+					arr_picture = (byte[])converter.ConvertTo(PhotoPictureBox.Image, typeof(byte[]));
+#pragma warning restore CS8600 // Преобразование литерала, допускающего значение NULL или возможного значения NULL в тип, не допускающий значение NULL.
+					command.Parameters.AddWithValue("Обложка", arr_picture);
+				}
+				
 				command.Parameters.AddWithValue("Наличие", NumberOfBooksTxtBox.Text);
 
 				if (command.ExecuteNonQuery() == 1)
@@ -74,12 +84,9 @@ namespace LibraryForm
 			PublisherTxtBox.Text = CurrentBook.Publisher;
             try
             {
-				PhotoPictureBox.Load(CurrentBook.PhotoPictureBox);
+				PhotoPictureBox.Image =  CurrentBook.PhotoPictureBox;
 			}
-            catch (Exception)
-            {
-
-            }		
+            catch (Exception) {	}		
 			NumberOfBooksTxtBox.Text = CurrentBook.NumberOfBooks;
 		}
 
