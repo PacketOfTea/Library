@@ -43,6 +43,7 @@
             this.NumberOfBooksTxtBox = new System.Windows.Forms.TextBox();
             this.NumberOfBooksLbl = new System.Windows.Forms.Label();
             this.PublicDateMskdTxtBox = new System.Windows.Forms.MaskedTextBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.PhotoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,6 +57,7 @@
             this.LoadImageBtn.TabIndex = 34;
             this.LoadImageBtn.Text = "Загрузить изображение";
             this.LoadImageBtn.UseVisualStyleBackColor = false;
+            this.LoadImageBtn.Click += new System.EventHandler(this.LoadImageBtn_Click);
             // 
             // SaveBtn
             // 
@@ -151,6 +153,7 @@
             this.PhotoPictureBox.Location = new System.Drawing.Point(12, 14);
             this.PhotoPictureBox.Name = "PhotoPictureBox";
             this.PhotoPictureBox.Size = new System.Drawing.Size(150, 200);
+            this.PhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PhotoPictureBox.TabIndex = 21;
             this.PhotoPictureBox.TabStop = false;
             // 
@@ -180,6 +183,10 @@
             this.PublicDateMskdTxtBox.Size = new System.Drawing.Size(221, 27);
             this.PublicDateMskdTxtBox.TabIndex = 37;
             this.PublicDateMskdTxtBox.ValidatingType = typeof(int);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // BookForm
             // 
@@ -229,5 +236,6 @@
         private TextBox NumberOfBooksTxtBox;
         private Label NumberOfBooksLbl;
         private MaskedTextBox PublicDateMskdTxtBox;
+        private OpenFileDialog openFileDialog1;
     }
 }

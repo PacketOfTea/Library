@@ -158,5 +158,16 @@ namespace LibraryForm
 				e.Handled = true;
 			}
 		}
-	}
+
+        private void LoadImageBtn_Click(object sender, EventArgs e)
+        {
+			openFileDialog1.Filter = "Images (*.BMP;*.JPG;*.GIF,*.PNG,*.TIFF)|*.BMP;*.JPG;*.GIF;*.PNG;*.TIFF|" +
+				"All files (*.*)|*.*";
+			openFileDialog1.Title = "Выберите фотографию";
+			if (openFileDialog1.ShowDialog(this) == DialogResult.OK)
+			{
+				PhotoPictureBox.Image = Image.FromFile(openFileDialog1.FileName);
+			}
+		}
+    }
 }
