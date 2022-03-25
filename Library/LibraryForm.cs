@@ -38,6 +38,7 @@ namespace LibraryForm
 #pragma warning restore CS8601 // Возможно, назначение-ссылка, допускающее значение NULL.
 			showPinnedBook();
 		}
+
 		SearchForm search_form;
 		private void SearchBookBtn_Click(object sender, EventArgs e)
 		{
@@ -48,9 +49,10 @@ namespace LibraryForm
 				search_form.Show();
 			}
 			else
+			{
 				search_form.WindowState = FormWindowState.Normal;
+			}
 		}
-
 		private void PrintCardBtn_Click(object sender, EventArgs e)
 		{
 			ChangeReaderBtn.Visible = false;
@@ -63,7 +65,9 @@ namespace LibraryForm
 			PrintCardBtn.Visible = true;
 			printDialog1.Document = printDocument1;
 			if (printDialog1.ShowDialog() == DialogResult.OK)
+			{
 				printDocument1.Print();
+			}
 		}
 
 		ReaderForm? reader_form;
@@ -106,12 +110,10 @@ namespace LibraryForm
 		{
 			SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT id, [Название книги], [Автор книги], [Дата издания], " +
 				"[Издательство], [Обложка], [Наличие] FROM Книги", sqlConnection);
-
 			DataSet dataset = new DataSet();
 			dataAdapter.Fill(dataset);
 			return dataset.Tables[0];
 		}
-
 
 		public void showReader()
 		{
@@ -119,14 +121,7 @@ namespace LibraryForm
 			SurnameLbl.Text = CurrentReader.Surname;
 			NameLbl.Text = CurrentReader.Name;
 			PatronymicLbl.Text = CurrentReader.Patronymic;
-			try
-			{
-				PhotoPictureBox.Image = CurrentReader.Photo;
-			}
-			catch (Exception)
-			{
-
-			}
+			try { PhotoPictureBox.Image = CurrentReader.Photo; } catch (Exception) { }
 		}
 
 		BookForm? bookform;
@@ -161,14 +156,22 @@ namespace LibraryForm
 				SelectedBook.Author = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
 				SelectedBook.PublicDate = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
 				SelectedBook.Publisher = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
-				SelectedBook.PhotoPictureBox = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();
+
+				try
+				{
+					byte[] imgData = (byte[])dataGridView1.SelectedRows[0].Cells[5].Value;
+					MemoryStream ms = new MemoryStream(imgData);
+					SelectedBook.PhotoPictureBox = Image.FromStream(ms);
+				}
+				catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+
 				SelectedBook.NumberOfBooks = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
 
 				title_lbl.Text = SelectedBook.Title;
 				author_lbl.Text = SelectedBook.Author;
 				publisher_lbl.Text = SelectedBook.Publisher + " " + SelectedBook.PublicDate;
 				qty_lbl.Text = "В наличии: " + SelectedBook.NumberOfBooks;
-				BooksPictureBox.Load(SelectedBook.PhotoPictureBox);
+				BooksPictureBox.Image = SelectedBook.PhotoPictureBox;
 
 				periodLbl.Visible = false;
 				takeBook_btn.Visible = false;
@@ -176,10 +179,7 @@ namespace LibraryForm
 				qty_lbl.Visible = true;
 
 			}
-			catch (Exception ex)
-			{
-				//MessageBox.Show(ex.Message);
-			}
+			catch (Exception) {	}
 #pragma warning restore CS8601 // Возможно, назначение-ссылка, допускающее значение NULL.
 		}
 
@@ -213,8 +213,7 @@ namespace LibraryForm
 			if (Convert.ToInt32(takedBook.NumberOfBooks) > 0)
 			{
 				takedBook.NumberOfBooks = (Convert.ToInt32(takedBook.NumberOfBooks) - 1).ToString();
-				sqlCommand = new SqlCommand($"Update [Книги] set [Наличие] = @Наличие Where Id={takedBook.id}",
-					sqlConnection);
+				sqlCommand = new SqlCommand($"Update [Книги] set [Наличие] = @Наличие Where Id={takedBook.id}", sqlConnection);
 				sqladd_BOOK(sqlCommand);
 
 				sqlCommand = new SqlCommand($"Insert INTO [Выданные книги] ([Читатель], [Книга], [Дата выдачи], " +
@@ -227,22 +226,21 @@ namespace LibraryForm
 				showDB_BOOKS(fillDatatableBooks());
 			}
 			else
-            {
+			{
 				MessageBox.Show("Выбранной книги нет в наличии");
-            }
+			}
 		}
 
 		private void takeBook_btn_Click(object sender, EventArgs e)
 		{
 			takedBook.DateReturn = DateTime.Today;
 			SqlCommand sqlCommand = new SqlCommand("Update [Выданные книги] set [Читатель] = @Читатель, " +
-                "[Книга] = @Книга, [Дата выдачи] = @Дата_выдачи, [Выдана до] = @Выдана_до, " +
+				"[Книга] = @Книга, [Дата выдачи] = @Дата_выдачи, [Выдана до] = @Выдана_до, " +
 				$"[Дата возврата] = @Дата_возврата Where Читатель = {CurrentReader.id} and Книга = {takedBook.id}",
 				sqlConnection);
 			sqladd_PinnedBook(sqlCommand, "Книга успешно принята");
 			ReadersBooksPanel.Controls.Clear();
 			showPinnedBook();
-
 
 			takedBook.NumberOfBooks = (Convert.ToInt32(takedBook.NumberOfBooks) + 1).ToString();
 			sqlCommand = new SqlCommand($"Update [Книги] set [Наличие] = @Наличие Where Id={takedBook.id}",
@@ -252,12 +250,11 @@ namespace LibraryForm
 			showDB_BOOKS(fillDatatableBooks());
 		}
 
-
 		private void showPinnedBook()
-        {
+		{
 			SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT id, [Читатель], [Книга], [Дата выдачи], " +
 				$"[Выдана до], [Дата возврата] FROM [Выданные книги] WHERE [Читатель] = {CurrentReader.id}" +
-                $" and [Дата возврата] IS NULL", sqlConnection);
+				$" and [Дата возврата] IS NULL", sqlConnection);
 			DataSet dataset = new DataSet();
 			dataAdapter.Fill(dataset);
 			DataTable dt1 = dataset.Tables[0];
@@ -272,7 +269,7 @@ namespace LibraryForm
 				}
 
 				SqlDataAdapter dataAdapter1 = new SqlDataAdapter("SELECT id, [Название книги], [Автор книги], [Дата издания], " +
-						$"[Издательство], [Обложка] FROM Книги WHERE id IN ({books})", sqlConnection);
+					$"[Издательство], [Обложка] FROM Книги WHERE id IN ({books})", sqlConnection);
 				DataSet dataset1 = new DataSet();
 				dataAdapter1.Fill(dataset1);
 				DataTable dtBook = dataset1.Tables[0];
@@ -285,7 +282,15 @@ namespace LibraryForm
 					takedBook.Author = dtBook.Rows[i][2].ToString();
 					takedBook.PublicDate = dtBook.Rows[i][3].ToString();
 					takedBook.Publisher = dtBook.Rows[i][4].ToString();
-					takedBook.PhotoPictureBox = dtBook.Rows[i][5].ToString();
+
+					try
+					{
+						byte[] imgData = (byte[])dtBook.Rows[i][5];
+						MemoryStream ms = new MemoryStream(imgData);
+						takedBook.PhotoPictureBox = Image.FromStream(ms);
+					}
+					catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+
 					takedBook.DateOfIssue = Convert.ToDateTime(dt1.Rows[i][3]);
 					takedBook.DateIssuedBefore = Convert.ToDateTime(dt1.Rows[i][4]);
 					takedBook.DateReturn = null;
@@ -320,12 +325,12 @@ namespace LibraryForm
 				command.Parameters.AddWithValue("Книга", takedBook.id);
 				command.Parameters.AddWithValue("Дата_выдачи", takedBook.DateOfIssue);
 				command.Parameters.AddWithValue("Выдана_до", takedBook.DateIssuedBefore);
-                if (takedBook.DateReturn == null)
-                {
+				if (takedBook.DateReturn == null)
+				{
 					command.Parameters.AddWithValue("Дата_возврата", DBNull.Value);
 				}
-                else
-                {
+				else
+				{
 					command.Parameters.AddWithValue("Дата_возврата", takedBook.DateReturn);
 				}
 
@@ -365,7 +370,7 @@ namespace LibraryForm
 		}
 		
 		public void ChangePanelBook(PinnedBook currentBook)
-        {
+		{
 			periodLbl.Visible = true;
 			takeBook_btn.Visible = true;
 			giveBook_btn.Visible = false;
@@ -376,10 +381,10 @@ namespace LibraryForm
 			title_lbl.Text = currentBook.Title;
 			author_lbl.Text = currentBook.Author;
 			publisher_lbl.Text = currentBook.Publisher;
-			//BooksPictureBox.Load(currentBook.PhotoPictureBox);
+			BooksPictureBox.Image = currentBook.PhotoPictureBox;
 			periodLbl.Text = "Дата выдачи: " + currentBook.DateOfIssue.Value.ToShortDateString() 
 				+ "\nВернуть до:   " + currentBook.DateIssuedBefore.Value.ToShortDateString();
-        }
+		}
 
-    }
+	}
 }

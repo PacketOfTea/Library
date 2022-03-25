@@ -147,6 +147,7 @@
             // PhotoPictureBox
             // 
             this.PhotoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PhotoPictureBox.Image = global::Library.Properties.Resources.NoPicture;
             this.PhotoPictureBox.Location = new System.Drawing.Point(12, 14);
             this.PhotoPictureBox.Name = "PhotoPictureBox";
             this.PhotoPictureBox.Size = new System.Drawing.Size(150, 200);

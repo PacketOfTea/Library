@@ -8,7 +8,7 @@ namespace LibraryForm
 		public string? Author;
 		public string? PublicDate;
 		public string? Publisher;
-		public string? PhotoPictureBox;
+		public Image? PhotoPictureBox;
 		public string? NumberOfBooks;
 
 		public Book() {	}
@@ -19,7 +19,7 @@ namespace LibraryForm
 			Author = null;
 			PublicDate = null;
 			Publisher = null;
-			PhotoPictureBox = null;
+			PhotoPictureBox = Library.Properties.Resources.NoPicture;
 			NumberOfBooks = null;
 		}
 	}
