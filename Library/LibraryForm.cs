@@ -213,6 +213,7 @@ namespace LibraryForm
 			if (Convert.ToInt32(takedBook.NumberOfBooks) > 0)
 			{
 				takedBook.NumberOfBooks = (Convert.ToInt32(takedBook.NumberOfBooks) - 1).ToString();
+				qty_lbl.Text = "В наличии: " + takedBook.NumberOfBooks;
 				sqlCommand = new SqlCommand($"Update [Книги] set [Наличие] = @Наличие Where Id={takedBook.id}", sqlConnection);
 				sqladd_BOOK(sqlCommand);
 
@@ -224,11 +225,24 @@ namespace LibraryForm
 				panelTakedBook = new BookPanel(ReadersBooksPanel, ReadersBooksPanel.Controls.Count, takedBook, this);
 
 				showDB_BOOKS(fillDatatableBooks());
+				resetPanelCurrentBook();
 			}
 			else
 			{
 				MessageBox.Show("Выбранной книги нет в наличии");
 			}
+		}
+
+		private void resetPanelCurrentBook()
+        {
+			BooksPictureBox.Image = Library.Properties.Resources.NoPicture;
+			title_lbl.Text = "Название произведения";
+			author_lbl.Text = "Автор";
+			publisher_lbl.Text = "Издательство/год публикации";
+			periodLbl.Visible = false;
+			takeBook_btn.Visible = false;
+			giveBook_btn.Visible = false;
+			qty_lbl.Visible = false;
 		}
 
 		private void takeBook_btn_Click(object sender, EventArgs e)

@@ -88,7 +88,6 @@ namespace LibraryForm
 			ReaderCardTxtBox.Text = text;
 			if (text != "")
 				LoginBtn_Click(this, null);
-
 		}
 
 

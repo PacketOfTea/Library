@@ -58,7 +58,7 @@ namespace LibraryForm
 			CurrentReader.Photo = PhotoPictureBox.Image;
 		}
 
-		public void sqladd(SqlCommand command, string message)
+		public bool sqladd(SqlCommand command, string message)
 		{
 			try
 			{
@@ -76,15 +76,26 @@ namespace LibraryForm
                     arr_picture = (byte[])converter.ConvertTo(CurrentReader.Photo, typeof(byte[]));
 #pragma warning restore CS8600 // Преобразование литерала, допускающего значение NULL или возможного значения NULL в тип, не допускающий значение NULL.
                     command.Parameters.AddWithValue("Фото", arr_picture);
-				}		
+				}
 				if (command.ExecuteNonQuery() == 1)
 				{
 					MessageBox.Show(message);
+#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
+#pragma warning disable CS8604 // Возможно, аргумент-ссылка, допускающий значение NULL.
+					if (!ModeEdit)
+					{
+						login.ChangeTextCardNumber(CurrentReader.Library_card_number);
+					}
+#pragma warning restore CS8604 // Возможно, аргумент-ссылка, допускающий значение NULL.
+#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
+					return true;
 				}
+				else { return false; }
 			}
 			catch (Exception ex)
 			{
 				MessageBox.Show(ex.Message);
+				return false;
 			}
 		}
 
@@ -108,10 +119,7 @@ namespace LibraryForm
 			{
 				PhotoPictureBox.Image = CurrentReader.Photo;
 			}
-			catch (Exception)
-			{
-
-			}
+			catch (Exception) {	}
 		}
 
 		private void SaveBtn_Click(object sender, EventArgs e)
@@ -131,26 +139,26 @@ namespace LibraryForm
 							"[Номер читательского билета], [Адрес], [Номер телефона], [Фото]) " +
 							"VALUES (@Фамилия, @Имя, @Отчество, @Номер_читательского_билета, @Адрес, @Номер_телефона, " +
                             "@Фото)", sqlConnection);
-						sqladd(sqlCommand, "Читатель добавлен в БД");
-#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
-#pragma warning disable CS8604 // Возможно, аргумент-ссылка, допускающий значение NULL.
-                        login.ChangeTextCardNumber(CurrentReader.Library_card_number);
-#pragma warning restore CS8604 // Возможно, аргумент-ссылка, допускающий значение NULL.
-#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
+						if (sqladd(sqlCommand, "Читатель добавлен в БД"))
+						{
+							this.Close();
+						}
                         break;
 					case true:
 						sqlCommand = new SqlCommand($"Update [Читатели] set [Фамилия] = @Фамилия, [Имя] = @Имя, " +
                             "[Отчество] = @Отчество, [Номер читательского билета] = @Номер_читательского_билета, " +
                             "[Адрес] = @Адрес, [Номер телефона] = @Номер_телефона, [Фото] = @Фото " +
 							$"Where Id={CurrentReader.id}", sqlConnection);
-						sqladd(sqlCommand, "Читатель изменен в БД");
+						if (sqladd(sqlCommand, "Читатель изменен в БД"))
+                        {
 #pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
-                        main.UpdateReader(CurrentReader);
+							main.UpdateReader(CurrentReader);
 #pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
+							this.Close();
+						}
                         break;
 				}
-
-				this.Close();
+				
 			}
 		}
 
