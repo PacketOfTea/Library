@@ -204,6 +204,16 @@ namespace LibraryForm
 		BookPanel panelTakedBook;
 		private void giveBook_btn_Click(object sender, EventArgs e)
 		{
+			SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT [Читатель], [Книга] FROM [Выданные книги] " +
+				$"WHERE Читатель = {CurrentReader.id} and Книга = {SelectedBook.id} and [Дата возврата] IS NULL", sqlConnection);
+			DataSet dataset = new DataSet();
+			dataAdapter.Fill(dataset);
+			if (dataset.Tables[0].Rows.Count > 0)
+            {
+				MessageBox.Show("Данная книга уже есть у Читателя!");
+				return;
+            }
+
 			SqlCommand sqlCommand;
 			takedBook = new PinnedBook(SelectedBook);
 			takedBook.DateOfIssue = DateTime.Today;
@@ -262,51 +272,41 @@ namespace LibraryForm
 			sqladd_BOOK(sqlCommand);
 
 			showDB_BOOKS(fillDatatableBooks());
+			resetPanelCurrentBook();
 		}
 
 		private void showPinnedBook()
 		{
-			SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT id, [Читатель], [Книга], [Дата выдачи], " +
-				$"[Выдана до], [Дата возврата] FROM [Выданные книги] WHERE [Читатель] = {CurrentReader.id}" +
-				$" and [Дата возврата] IS NULL", sqlConnection);
+			SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT [Выданные книги].id, [Читатель], [Книга], [Дата выдачи], " +
+                "[Выдана до], [Дата возврата], [Книги].id, [Книги].[Название книги], [Книги].[Автор книги], [Книги].[Дата издания], " +
+                "[Книги].[Издательство], [Книги].[Наличие], [Книги].[Обложка] FROM [Выданные книги], [Книги] " +
+				$"WHERE [Читатель] = {CurrentReader.id} and [Дата возврата] IS NULL and [Книги].id = Книга", sqlConnection);
 			DataSet dataset = new DataSet();
 			dataAdapter.Fill(dataset);
-			DataTable dt1 = dataset.Tables[0];
+			DataTable dtBook = dataset.Tables[0];
 
-			if (dt1.Rows.Count > 0)
+			if (dtBook.Rows.Count > 0)
 			{
-				string books = dt1.Rows[0][2].ToString();
-
-				for (int i = 1; i < dt1.Rows.Count; i++)
-				{
-					books += "," + dt1.Rows[i][2].ToString();
-				}
-
-				SqlDataAdapter dataAdapter1 = new SqlDataAdapter("SELECT id, [Название книги], [Автор книги], [Дата издания], " +
-					$"[Издательство], [Обложка] FROM Книги WHERE id IN ({books})", sqlConnection);
-				DataSet dataset1 = new DataSet();
-				dataAdapter1.Fill(dataset1);
-				DataTable dtBook = dataset1.Tables[0];
-
 				for (int i = 0; i < dtBook.Rows.Count; i++)
 				{
 					PinnedBook takedBook = new PinnedBook(new Book());
-					takedBook.id = Convert.ToInt32(dtBook.Rows[i][0]);
-					takedBook.Title = dtBook.Rows[i][1].ToString();
-					takedBook.Author = dtBook.Rows[i][2].ToString();
-					takedBook.PublicDate = dtBook.Rows[i][3].ToString();
-					takedBook.Publisher = dtBook.Rows[i][4].ToString();
+					takedBook.id = Convert.ToInt32(dtBook.Rows[i][6]);
+					takedBook.Title = dtBook.Rows[i][7].ToString();
+					takedBook.Author = dtBook.Rows[i][8].ToString();
+					takedBook.PublicDate = dtBook.Rows[i][9].ToString();
+					takedBook.Publisher = dtBook.Rows[i][10].ToString();
+					takedBook.NumberOfBooks = dtBook.Rows[i][11].ToString();
 
 					try
 					{
-						byte[] imgData = (byte[])dtBook.Rows[i][5];
+						byte[] imgData = (byte[])dtBook.Rows[i][12];
 						MemoryStream ms = new MemoryStream(imgData);
 						takedBook.PhotoPictureBox = Image.FromStream(ms);
 					}
 					catch (Exception ex) { MessageBox.Show(ex.ToString()); }
 
-					takedBook.DateOfIssue = Convert.ToDateTime(dt1.Rows[i][3]);
-					takedBook.DateIssuedBefore = Convert.ToDateTime(dt1.Rows[i][4]);
+					takedBook.DateOfIssue = Convert.ToDateTime(dtBook.Rows[i][3]);
+					takedBook.DateIssuedBefore = Convert.ToDateTime(dtBook.Rows[i][4]);
 					takedBook.DateReturn = null;
 
 					panelTakedBook = new BookPanel(ReadersBooksPanel, ReadersBooksPanel.Controls.Count, takedBook, this);
